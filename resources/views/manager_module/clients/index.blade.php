@@ -134,7 +134,7 @@
                             <% for(var i = 0; i < users.length; i++) { %>
                                 
                             <tr>
-                                <td><a href="/clients/profile/<%= users[i].id %>"><%= users[i].full_name %></a></td>
+                                <td><a href="/manager/show-client/<%= users[i].id %>"><%= users[i].full_name %></a></td>
                                 <td><%= users[i].email %></td>
                                 <td>0<%= users[i].phone %></td>
                                 <td><%= users[i].added_by %></td>

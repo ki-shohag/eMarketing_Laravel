@@ -60,12 +60,12 @@
                         <label for="">Email: <%= user[0].email %></label>
                     </div>
                     <div class="border-top border-primary pt-4">
-                        <button class="active btn btn-primary btn-block"><a href="/clients/profile/<%= user[0].id %>"><span class="text-light">Profile</span></a></button><br>
-                        <button class="btn btn-secondary btn-block"><a href="/clients/profile/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
-                        <button class="btn btn-info btn-block"><a href="/clients/profile/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
-                        <button class="btn btn-warning btn-block"><a href="/clients/profile/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
-                        <button class="btn btn-danger btn-block"><a href="/clients/profile/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <button class="btn btn-dark btn-block"><a href="/clients/profile/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>"><span class="text-light">Profile</span></a></button><br>
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                 </div>
                 <div class="col col-xl-6">
@@ -75,7 +75,7 @@
                                 <h5 class="text-light">Profile Details</h5>
                             </div>
                             <div class="col-6 text-right bg-primary  mb-3 pt-3">
-                                <button class="btn btn-success mb-2"><a href="/clients/profile/edit/<%= user[0].id %>" class="text-light">Edit</a></button>
+                                <button class="btn btn-success mb-2"><a href="/manager/show-client/<%= user[0].id %>/edit" class="text-light">Edit</a></button>
                             </div>
                             <div class="col-12">
                                 <table class="table table-bordered">
