@@ -23,7 +23,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/manager">CRM Spot</a></h1>
+    <h1 class="logo mr-auto"><a href="/manager-dashboard">CRM Spot</a></h1>
       <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>

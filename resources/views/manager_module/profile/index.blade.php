@@ -24,7 +24,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/manager">CRM Spot</a></h1>
+    <h1 class="logo mr-auto"><a href="/manager-dashboard">CRM Spot</a></h1>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -60,7 +60,7 @@
                   <h5 class="text-left">Welcome, Manager</h5>
                 </div>
                 <div class="col-4 text-right">
-                  <button class="btn btn-warning mr-1"><a href="/manager/profile/edit/1">Edit</a></button>
+                  <a class="btn btn-warning mr-1" href="/manager/profile/1/edit">Edit</a>
                 </div>
               </div>
             </div>

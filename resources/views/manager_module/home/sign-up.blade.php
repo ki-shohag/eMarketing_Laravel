@@ -33,7 +33,6 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
                 <h2>Sign Up</h2><br>
-<<<<<<< HEAD
                 <form method="post" action="/manager/signup">
                 <input class="form-control"type="text" placeholder="Full Name" name="full_name"><br>
                 <input class="form-control"type="text" placeholder="User Name" name="user_name"><br>
@@ -49,19 +48,6 @@
                 <br><button class="form-control btn btn-primary">Sign Up</button><br><br>
                 <a href="/manager/login">Want to sign in?</a><br><br>
                 </form>
-=======
-                <input class="form-control" type="text" placeholder="Full Name"><br>
-                <input class="form-control" type="text" placeholder="User Name"><br>
-                <input class="form-control" type="text" placeholder="Email"><br>
-                <input class="form-control" type="text" placeholder="Phone"><br>
-                <input class="form-control" type="text" placeholder="Date of Birth"><br>
-                <input class="form-control" type="text" placeholder="Address"><br>
-                <input class="form-control" type="text" placeholder="City"><br>
-                <input class="form-control" type="text" placeholder="Country"><br>
-                <input class="form-control" type="text" placeholder="Company Name"><br><br>
-                <input type="submit" name="signUpBtn" value="Sign Up" class="btn btn-primary"><br><br>
-                <a href="/manager/login">Want to sign in?</a><br><br>
->>>>>>> 41893e761dc347f1ed36ab23ebd5063d7277d56a
             </div>
         </div>
     </section>

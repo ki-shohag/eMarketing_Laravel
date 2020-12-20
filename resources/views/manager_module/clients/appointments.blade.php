@@ -26,7 +26,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo mr-auto"><a href="/manager">CRM Spot</a></h1>
+        <h1 class="logo mr-auto"><a href="/manager-dashboard">CRM Spot</a></h1>
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
@@ -65,11 +65,11 @@
                     <div class="border-top border-primary pt-4">
                     <div class="border-top border-primary pt-4">
                         <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>"><span class="text-light">Profile</span></a></button><br>
-                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
-                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
-                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
-                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
+                        <a class="btn btn-warning btn-block"href="/manager/show-client/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
+                        <a class="btn btn-success btn-block"href="/manager/show-client/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
+                        <a class="btn btn-danger btn-block"href="/manager/show-client/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
+                        <a class="btn btn-dark btn-block"href="/manager/show-client/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
+                        <a class="btn btn-info btn-block"href="/manager/show-client/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                     </div>
                 </div>

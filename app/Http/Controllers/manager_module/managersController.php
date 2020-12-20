@@ -15,4 +15,8 @@ class managersController extends Controller
     public function showProfile(Request $req){
         return view('manager_module.profile.index');
     }
+
+    public function showProfileEdit(Request $req){
+        return view('manager_module.profile.edit');
+    }
 }
