@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/login/manager', [loginController::class, 'index']);
+Route::get('/manager-dashboard', [managersController::class, 'index']);
+Route::get('/manager/clients', [clientsController::class, 'index']);
+Route::get('/manager/company', [companyController::class, 'index']);
+Route::get('/manager/services', [servicesController::class, 'index']);
+Route::get('/manager/chat', [chatController::class, 'index']);
+Route::get('/manager/profile', [managersController::class, 'showProfile']);
