@@ -30,7 +30,7 @@
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                @if(true)
+            @if(true)
             <li class="active"><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
             <li><a href="/manager/company">Company</a></li>

@@ -23,7 +23,7 @@
 <body>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="/manager">CRM Spot</a></h1>
+      <h1 class="logo mr-auto"><a href="/manager-dashboard">CRM Spot</a></h1>
       <a href="#about" class="get-started-btn scrollto">Get Started</a>
     </div>
   </header><!-- End Header -->
@@ -33,7 +33,9 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
                 <h2>Sign Up</h2><br>
+                <h5 class="text-danger"><i><b>{{session('msg')}}</b></i></h5><br>
                 <form method="post" action="/manager/signup">
+                @csrf
                 <input class="form-control"type="text" placeholder="Full Name" name="full_name"><br>
                 <input class="form-control"type="text" placeholder="User Name" name="user_name"><br>
                 <input class="form-control"type="email" placeholder="Email" name="email"><br>
@@ -44,7 +46,7 @@
                 <input class="form-control"type="text" placeholder="Country" name="country"><br>
                 <input class="form-control"type="text" placeholder="Company Name" name="company_name"><br>
                 <input class="form-control"type="password" placeholder="Password" name="password"><br>
-                <input class="form-control"type="password" placeholder="Re-enter Password" name="re_enter_password"><br>
+                <input class="form-control"type="password" placeholder="Re-enter Password" name="confirm_password"><br>
                 <br><button class="form-control btn btn-primary">Sign Up</button><br><br>
                 <a href="/manager/login">Want to sign in?</a><br><br>
                 </form>

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\manager_module\Client;
 
 class clientsController extends Controller
 {
     public function index(Request $req){
-        return view('manager_module.clients.index');
+        $clients = Client::all();
+        
+        return view('manager_module.clients.index')->with('clients', $clients);
     }
 
     public function showClient(Request $req){

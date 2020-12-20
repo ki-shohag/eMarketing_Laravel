@@ -131,17 +131,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for(var i = 0; i < users.length; i++) { %>
+                        @for($i=0; $i < count($clients); $i++) 
                                 
                             <tr>
-                                <td><a href="/manager/show-client/<%= users[i].id %>"><%= users[i].full_name %></a></td>
-                                <td><%= users[i].email %></td>
-                                <td>0<%= users[i].phone %></td>
-                                <td><%= users[i].added_by %></td>
-                                <td><%= users[i].status %></td>
+                                <td><a href="/manager/show-client/{{$clients[$i]['id']}}">{{$clients[$i]['full_name']}}  </a></td>
+                                <td>{{$clients[$i]['email']}}</td>
+                                <td>0{{$clients[$i]['phone']}}</td>
+                                <td>{{$clients[$i]['added_by']}}</td>
+                                <td>{{$clients[$i]['status']}}</td>
                             </tr>
-                            
-                            <% } %>
+                            @endfor
                     </table>
                 </div>
             </div>
