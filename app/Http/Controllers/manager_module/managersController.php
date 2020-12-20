@@ -4,7 +4,7 @@ namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\manager_module\Manager;
 
 class managersController extends Controller
 {
@@ -13,10 +13,21 @@ class managersController extends Controller
     }
 
     public function showProfile(Request $req){
-        return view('manager_module.profile.index');
+        $manager = Manager::where('user_name', $req->session()->get('user_name'))->first();
+        if(isset($manager)){
+            return view('manager_module.profile.index')->with('manager', $manager);
+        }else{
+            return redirect('/manager/login');
+        }
     }
 
-    public function showProfileEdit(Request $req){
-        return view('manager_module.profile.edit');
+    public function showProfileEdit(Request $req, $id){
+        $manager = Manager::find($id);
+        if(isset($manager)){
+            return view('manager_module.profile.edit')->with('manager', $manager);
+        }
+        else{
+            return redirect('/manager/login');
+        }
     }
 }

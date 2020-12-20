@@ -15,9 +15,10 @@ class accessController extends Controller
         $manager = Manager::where('email', $req->email)
         ->where('password', $req->password)
         ->first();
-
+        
         if(isset($manager['user_name']) ){
             $req->session()->put('user_name', $manager['user_name']);
+            $req->session()->put('user_id', $manager['id']);
             return redirect('/manager-dashboard');
         }
         else{

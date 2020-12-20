@@ -28,26 +28,19 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-        @if(true)
-            <li class="active"><a href="/manager-dashboard">Dashboard</a></li>
+            <li><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
             <li><a href="/manager/company">Company</a></li>
             <li><a href="/manager/services">Services</a></li>
             <li><a href="/manager/chat">Chat</a></li>
-            <li><a href="/manager/profile">Profile</a></li>
+            <li class="active"><a href="/manager/profile">Profile</a></li>
             <li><a href="/manager/signout">Sign Out</a></li>
-          @else
-            <li><a href="/manager/login">Sign In</a></li>
-          @endif
-
         </ul>
       </nav><!-- .nav-menu -->
 
 
     </div>
   </header><!-- End Header -->
-
-
 
   <main id="main">
     <section id="manager-profile-section">
@@ -60,12 +53,12 @@
                   <h5 class="text-left">Welcome, Manager</h5>
                 </div>
                 <div class="col-4 text-right">
-                  <a class="btn btn-warning mr-1" href="/manager/profile/1/edit">Edit</a>
+                  <a class="btn btn-warning mr-1" href="/manager/profile/{{$manager['id']}}/edit">Edit</a>
                 </div>
               </div>
             </div>
             <div class="text-center mt-3 mb-2">
-              <img src="/assets/img/team/team-1.jpg" alt="No Image.." id="manager-profile-pic"><br><br>
+              <img src="{{asset('img/team/team-1.jpg')}}" alt="No Image.." id="manager-profile-pic"><br><br>
               <button class="btn btn-success btn-sm">Upload Profile Pic</button>
               <button class="btn btn-danger btn-sm">Remove Profile Pic</button><br><br>
             </div>
@@ -73,41 +66,36 @@
               <tbody>
                 <tr>
                   <td>Full Name : </td>
-                  <td> <%= user[0].full_name %></td>
-                </tr>
-                <tr>
-                  <td>User Name : </td>
-                  <td> <%= user[0].user_name %></td>
+                  <td>{{$manager['full_name']}}</td>
                 </tr>
                 <tr>
                   <td>Company Name : </td>
-                  <td> <%= user[0].company_name %></td>
+                  <td>{{$manager['company_name']}}</td>
                 </tr>
                 <tr>
                   <td>Email : </td>
-                  <td> <%= user[0].email %></td>
+                  <td>{{$manager['email']}}</td>
                 </tr>
                 <tr>
                   <td>Phone : </td>
-                  <td> 0<%= user[0].phone %></td>
+                  <td> 0{{$manager['phone']}}</td>
                 </tr>
                 <tr>
                   <td>Date of Birth : </td>
-                  <td> <%= user[0].dob %></td>
+                  <td>{{$manager['dob']}}</td>
                 </tr>
                 <tr>
                   <td>Address : </td>
-                  <td> <%= user[0].address %></td>
+                  <td>{{$manager['address']}}</td>
                 </tr>
                 <tr>
                   <td>City : </td>
-                  <td> <%= user[0].city %></td>
+                  <td>{{$manager['city']}}</td>
                 </tr>
                 <tr>
                   <td>Joining Date : </td>
-                  <td> <%= user[0].joining_date %></td>
+                  <td>{{$manager['joining_date']}}</td>
                 </tr>
-
               </tbody>
             </table>
           </div>

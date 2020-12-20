@@ -28,18 +28,13 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-        @if(true)
-            <li class="active"><a href="/manager-dashboard">Dashboard</a></li>
+            <li><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
             <li><a href="/manager/company">Company</a></li>
             <li><a href="/manager/services">Services</a></li>
             <li><a href="/manager/chat">Chat</a></li>
-            <li><a href="/manager/profile">Profile</a></li>
+            <li class="active"><a href="/manager/profile">Profile</a></li>
             <li><a href="/manager/signout">Sign Out</a></li>
-          @else
-            <li><a href="/manager/login">Sign In</a></li>
-          @endif
-
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -75,37 +70,36 @@
                 <tbody>
                   <tr>
                     <td>Full Name : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].full_name %>" name="full_name"></td>
+                    <td><input class="form-control" type="text" value="{{$manager['full_name']}}" name="full_name"></td>
                   </tr>
                   <tr>
                     <td>Company Name : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].company_name %>" name="company_name">
+                    <td><input class="form-control" type="text" value="{{$manager['company_name']}}" name="company_name">
                     </td>
                   </tr>
                   <tr>
                     <td>Phone : </td>
-                    <td><input class="form-control" type="number" value="0<%= user[0].phone %>" name="phone"></td>
+                    <td><input class="form-control" type="number" value="0{{$manager['phone']}}" name="phone"></td>
                   </tr>
                   <tr>
                     <td>Date of Birth : </td>
-                    <td><input class="form-control" type="date" value="<%= user[0].dob %>" name="dob"></td>
+                    <td><input class="form-control" type="date" value="{{$manager['dob']}}" name="dob"></td>
                   </tr>
                   <tr>
                     <td>Address : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].address %>" name="address"></td>
+                    <td><input class="form-control" type="text" value="{{$manager['address']}}" name="address"></td>
                   </tr>
                   <tr>
                     <td>City : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].city %>" name="city"></td>
+                    <td><input class="form-control" type="text" value="{{$manager['city']}}" name="city"></td>
                   </tr>
                   <tr>
                     <td>Country : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].city %>" name="country"></td>
+                    <td><input class="form-control" type="text" value="{{$manager['country']}}" name="country"></td>
                   </tr>
                   <tr>
                     <td>Joining Date : </td>
-                    <td><input class="form-control" type="date" value="<%= user[0].joining_date %>" name="joining_date">
-                    </td>>
+                    <td><input type="text" class="form-control" value="{{$manager['joining_date']}}" disabled="disabled" name="joining_date"></td>
                   </tr>
                 </tbody>
               </table>

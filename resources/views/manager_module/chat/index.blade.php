@@ -26,18 +26,13 @@
       <h1 class="logo mr-auto"><a href="/manager-dashboard">CRM Spot</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-        @if(true)
-            <li class="active"><a href="/manager-dashboard">Dashboard</a></li>
+            <li><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
             <li><a href="/manager/company">Company</a></li>
             <li><a href="/manager/company/services">Services</a></li>
-            <li><a href="/manager/chat">Chat</a></li>
+            <li class="active"><a href="/manager/chat">Chat</a></li>
             <li><a href="/manager/profile">Profile</a></li>
             <li><a href="/manager/signout">Sign Out</a></li>
-          @else
-            <li><a href="/manager/login">Sign In</a></li>
-          @endif
-
         </ul>
       </nav><!-- .nav-menu -->
 
