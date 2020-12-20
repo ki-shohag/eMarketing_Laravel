@@ -18,7 +18,7 @@
   <link href="{{asset('vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
-</head>
+</head> 
 
 <body>
   <header id="header" class="fixed-top">
