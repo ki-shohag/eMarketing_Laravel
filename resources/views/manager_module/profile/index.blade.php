@@ -58,9 +58,13 @@
               </div>
             </div>
             <div class="text-center mt-3 mb-2">
-              <img src="{{asset('img/team/team-1.jpg')}}" alt="No Image.." id="manager-profile-pic"><br><br>
-              <button class="btn btn-success btn-sm">Upload Profile Pic</button>
-              <button class="btn btn-danger btn-sm">Remove Profile Pic</button><br><br>
+              
+            <form class="text-center" method="post" action="/manager/upload-profile-pic" enctype="multipart/form-data">
+            @csrf
+              <img src="{{asset('uploads/profile-pic/'.$manager['id'].'JPG')}}" alt="No Image.." id="manager-profile-pic"><br><br>
+              <input type="file" class="w-50 text-center" name="profile-pic">
+              <button type="submit" class="btn btn-success btn-sm">Upload Profile Pic</button>
+            </form>
               <span class="text-danger">{{session('msg')}}</span>
             </div>
             <table id="appointmentsTable" class="table table-striped table-bordered" style="width:100%">

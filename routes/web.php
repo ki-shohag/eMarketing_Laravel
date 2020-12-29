@@ -43,6 +43,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/show-client/{id}/notes', [clientsController::class, 'showClientNote']);
     Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);
 
+    Route::post('/manager/upload-profile-pic', [managersController::class, 'uploadProfilePic']);
+
     Route::post('/clients/{client_id}/calls/add-call', [callsController::class, 'insertCall']);
     Route::post('/client/{client_id}/calls/edit/{call_id}', [callsController::class, 'updateCall']);
     Route::get('/clients/{client_id}/calls/delete/{call_id}', [callsController::class, 'deleteCall']);
@@ -62,4 +64,6 @@ Route::group(['middleware'=>['sess']], function () {
     Route::post('/services/add-service', [servicesController::class, 'insertService']);
     Route::post('/services/update/{id}', [servicesController::class, 'updateService']);
     Route::get('/services/delete/{id}', [servicesController::class, 'deleteService']);
+
+
 });

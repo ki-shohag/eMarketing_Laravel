@@ -31,6 +31,24 @@ class managersController extends Controller
         }
     }
 
+    public function uploadProfilePic(Request $req){
+        if($req->hasFile('profile-pic')){
+            $file = $req->file('profile-pic');
+            /*echo "File Name: ".$file->getClientOriginalName()."<br/>";
+        	echo "File Extension: ".$file->getClientOriginalExtension()."<br/>";
+            echo "File Size: ".$file->getSize();*/
+            
+        	if($file->move('uploads/profile-pic/', $req->session()->get('user_id').$file->getClientOriginalExtension())){
+                $req.session()->flash('msg', '*Updated Profile Picture successfully!');
+                return redirect('/manager/profile');
+            }
+            else{
+                $req.session()->flash('msg', '*Failed to update Profile Picture!');
+                return redirect('/manager/profile');
+            }
+        }
+    }
+
     public function updateProfile(Request $req){
         $manager = Manager::find($req->session()->get('user_id'));
         $manager->full_name = $req->full_name;
