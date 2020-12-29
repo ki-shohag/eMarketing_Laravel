@@ -56,7 +56,7 @@
                   <h5 class="text-left">Company Details</h5>
                 </div>
                 <div class="col-4 text-right">
-                  <button class="btn btn-warning mr-1"><a href="/manager/company/edit/<%= user[0].id %>">Edit</a></button>
+                  <a class="btn btn-warning mr-1" href="/manager/company/edit/{{$company['id']}} ">Edit</a>
                 </div>
               </div>
             </div>
@@ -64,19 +64,19 @@
               <tbody>
                 <tr>
                   <td>Company Name</td>
-                  <td> <%= user[0].company_name %></td>
+                  <td> {{$company['name']}} </td>
                 </tr>
                 <tr>
                   <td>Address : </td>
-                  <td> <%= user[0].company_address %></td>
+                  <td>{{$company['company_address']}}  </td>
                 </tr>
                 <tr>
                   <td>Contact Number</td>
-                  <td> 0<%= user[0].contact_number %></td>
+                  <td>0{{$company['contact_number']}}</td>
                 </tr>
                 <tr>
                   <td>Type : </td>
-                  <td> <%= user[0].type %></td>
+                  <td>{{$company['type']}}  </td>
                 </tr>
               </tbody>
             </table>

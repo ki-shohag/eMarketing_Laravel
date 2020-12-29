@@ -27,6 +27,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager-dashboard', [managersController::class, 'index']);
     Route::get('/manager/clients', [clientsController::class, 'index']);
     Route::get('/manager/company', [companyController::class, 'index']);
+    Route::get('/manager/company/edit/{id}', [companyController::class, 'editCompany']);
+    Route::post('/manager/company/update/{id}', [companyController::class, 'updateCompany']);
     Route::get('/manager/services', [servicesController::class, 'index']);
     Route::get('/manager/chat', [chatController::class, 'index']);
     Route::get('/manager/profile', [managersController::class, 'showProfile']);

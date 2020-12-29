@@ -50,38 +50,39 @@
       <div class="row justify-content-center">
         <div class="col col-xl-5 mt-3">
           <div id="manager-profile-box">
-            <form action="/manager/company/edit/<%= user[0].id %>" method="post">
+            <form action="/manager/company/update/{{$company['id']}}" method="post">
               <div class="bg-primary text-light pt-3 pb-2 pl-2">
                 <div class="row justify-content-between">
                   <div class="col-4">
                     <h5 class="text-left">Company Details</h5>
+                    <span class="text-danger">{{session('msg')}}</span>
                   </div>
                   <div class="col-4 text-right">
                     <button type="submit" class="btn btn-success mr-1">Save Changes</button>
-                    <button class="btn btn-warning mr-1"><a class="text-light"
-                        href="/manager/company">Cancel</a></button>
+                    <a class="text-light btn btn-warning mr-1" href="/manager/company">Cancel</a>
                   </div>
                 </div>
               </div>
               <table id="appointmentsTable" class="table table-striped table-bordered" style="width:100%">
                 <tbody>
+                  @csrf
                   <tr>
                     <td>Company Name : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].company_name %>" name="company_name">
+                    <td><input class="form-control" type="text" value="{{$company['company_name']}}" name="company_name">
                     </td>
                   </tr>
                   <tr>
                     <td>Address : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].company_address %>" name="address"></td>
+                    <td><input class="form-control" type="text" value="{{$company['company_address']}}" name="company_address"></td>
                   </tr>
                   </tr>
                   <tr>
                     <td>Phone : </td>
-                    <td><input class="form-control" type="Number" value="0<%= user[0].contact_number %>" name="phone"></td>
+                    <td><input class="form-control" type="Number" value="0{{$company['contact_number']}}" name="contact_number"></td>
                   </tr>
                   <tr>
                     <td>Type : </td>
-                    <td><input class="form-control" type="text" value="<%= user[0].type %>" name="type"></td>
+                    <td><input class="form-control" type="text" value="{{$company['type']}}" name="type"></td>
                   </tr>
                 </tbody>
               </table>
