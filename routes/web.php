@@ -38,4 +38,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/show-client/{id}/appointments', [clientsController::class, 'showClientAppointment']);
     Route::get('/manager/show-client/{id}/notes', [clientsController::class, 'showClientNote']);
     Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);
+
+    Route::post('/clients/{client_id}/calls/add-call', [callsController::class, 'insertCall']);
+    Route::post('/client/{client_id}/calls/edit/{call_id}', [callsController::class, 'updateCall']);
+    Route::get('/clients/{client_id}/calls/delete/{call_id}', [callsController::class, 'deleteCall']);
 });

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
-
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\manager_module\Client;
+use App\Models\manager_module\Call;
 
 class clientsController extends Controller
 {
@@ -18,8 +19,12 @@ class clientsController extends Controller
         return view('manager_module.clients.profile')->with('client', $client);
     }
 
-    public function showClientCall(Request $req){
-        return view('manager_module.clients.calls');
+    public function showClientCall(Request $req, $id){
+        //DB::enableQueryLog(); // Enable query log
+        $client = Client::find($id);
+        $calls = Call::where('manager_id',$req->session()->get('user_id'))->get();
+        //dd(DB::getQueryLog()); // Show results of log
+        return view('manager_module.clients.calls')->with('client', $client)->with('calls', $calls);
     }
     public function showClientAppointment(Request $req){
         return view('manager_module.clients.appointments');
