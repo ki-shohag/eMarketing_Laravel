@@ -4,24 +4,54 @@ namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\manager_module\Note;
+use App\Models\manager_module\Client;
 
-class employeeHomeController extends Controller
+class notesController extends Controller
 {
-    public function index(Request $req){
-        if($req.session()->has('user_name')){
-                $user = User::where('user_name', $req->session()->get('user_name'))->first();
-                if(isset($user)){
-                    return view('employeeHome')->with('user', $user);
-                }
-                else{
-                    $req.session()->flash('msg', '*Please login first!');
-                    return redirect('/login');
-                }
+    public function insertNote(Request $req, $client_id){
+         $client = Client::find($client_id);
+         $appointment = new Note();
+         $appointment->title = $req->title;
+         $appointment->body = $req->body;
+         $appointment->creation_date =$req->creation_date;
+         $appointment->manager_id = $req->session()->get('user_id');
+         $appointment->client_id = $client_id;
+         if($appointment->save()){
+             $req.session()->flash('msg', '*Added note successfully!');
+             return redirect('/manager/show-client/'.$client_id.'/notes');
+         }
+         else{
+             $req.session()->flash('msg', '*Could not insert note!');
+             return redirect('/manager/show-client/'.$client_id.'/notes');
+         }
+    }
+
+    
+    public function updateNote(Request $req, $client_id, $note_id){
+        $note = Note::find($note_id);
+        $note->title = $req->title;
+        $note->body = $req->body;
+        $note->creation_date = $req->creation_date;
+        if($note->save()){
+        $req.session()->flash('msg', '*Updated Note!');
+        return redirect('/manager/show-client/'.$client_id.'/notes');
         }
         else{
-            $req.session()->flash('msg', '*Please login first!');
-            return redirect('/login');
+        $req.session()->flash('msg', '*Could not update note!');
+        return redirect('/manager/show-client/'.$client_id.'/notes');
+        }
+    }
+
+    public function deleteNote(Request $req,$client_id,$note_id){
+        $note = Note::find($note_id);
+        if($note->delete()){
+         $req.session()->flash('msg', '*Deleted Note!');
+         return redirect('/manager/show-client/'.$client_id.'/notes');
+        }
+        else{
+         $req.session()->flash('msg', '*Could not delete Note!');
+         return redirect('/manager/show-client/'.$client_id.'/notes');
         }
     }
 }

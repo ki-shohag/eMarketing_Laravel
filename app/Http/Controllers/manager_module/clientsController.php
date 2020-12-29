@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\manager_module\Client;
 use App\Models\manager_module\Call;
 use App\Models\manager_module\Appointment;
+use App\Models\manager_module\Note;
+use Illuminate\Support\Facades\App;
 
 class clientsController extends Controller
 {
@@ -28,15 +30,17 @@ class clientsController extends Controller
         return view('manager_module.clients.calls')->with('client', $client)->with('calls', $calls);
     }
     public function showClientAppointment(Request $req, $id){
-        $appointments = Appointment::all();
+        $appointments = Appointment::where('manager_id',$req->session()->get('user_id'))->get();
         $client = Client::find($id);
         return view('manager_module.clients.appointments')->with('client', $client)->with('appointments',$appointments);
     }
     public function showClientChat(Request $req){
         return view('manager_module.clients.chat');
     }
-    public function showClientNote(Request $req){
-        return view('manager_module.clients.notes');
+    public function showClientNote(Request $req, $id){
+        $notes = Note::where('manager_id',$req->session()->get('user_id'))->get();
+        $client = Client::find($id);
+        return view('manager_module.clients.notes')->with('client', $client)->with('notes', $notes);
     }
     public function showClientProposal(Request $req){
         return view('manager_module.clients.proposals');
