@@ -55,14 +55,14 @@
             <div class="col col-xl-8">
               <div class="row justify-content-around">
                 <div class="col-3 manager-dashboard-boxes text-center pt-5">
-                  <h5 class="mb-5">Total Clients: <span class="h1"><b><i></i></b></span></h5>
-                  <h5 class="mb-5">Active Clients: <span class="h1"><b><i></i></b></span></h5>
+                  <h5 class="mb-5">Total Clients: <span class="h1"><b><i>{{$totalClients}}</i></b></span></h5>
+                  <h5 class="mb-5">Active Clients: <span class="h1"><b><i>{{$activeClients}}</i></b></span></h5>
                   <button class="btn btn-link border-light mb-1"><a class="text-center text-light  text-decoration-none" href="/clients">Manage Clients</a></button>
                 </div>
                 <div class="col-4 manager-dashboard-boxes text-center pt-5" style="background: #5F9F9F;">
                   
-                  <h6 class="mb-5">Total Services: <span class="h1"><b><i></i></b></span></h6>
-                  <h6 class="mb-5">Available Services: <span class="h1"><b><i></i></b></span></h6>
+                  <h6 class="mb-5">Total Services: <span class="h1"><b><i>{{$totalServices}}</i></b></span></h6>
+                  <h6 class="mb-5">Available Services: <span class="h1"><b><i>{{$availableServices}}</i></b></span></h6>
                   <button class="btn btn-link border-light mb-1"><a class="text-center text-light  text-decoration-none" href="/clients">Manage Services</a></button>
                 </div>
                 <div class="col-4 manager-dashboard-boxes text-center pt-5" style="background: #7A67EE;">

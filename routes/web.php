@@ -41,7 +41,7 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/show-client/{id}/calls', [clientsController::class, 'showClientCall']);
     Route::get('/manager/show-client/{id}/appointments', [clientsController::class, 'showClientAppointment']);
     Route::get('/manager/show-client/{id}/notes', [clientsController::class, 'showClientNote']);
-    Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);
+    Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);    
 
     Route::post('/manager/upload-profile-pic', [managersController::class, 'uploadProfilePic']);
 

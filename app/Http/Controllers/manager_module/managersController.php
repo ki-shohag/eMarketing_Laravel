@@ -5,11 +5,20 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\manager_module\Manager;
+use App\Models\manager_module\Client;
+use App\Models\manager_module\Service;
 
 class managersController extends Controller
 {
     public function index(Request $req){
-        return view('manager_module.home.index');
+        $totalClients = Client::count();
+        $activeClients = Client::where('status', 'Active')->count();
+        $totalServices = Service::count();
+        $availableServices = Service::where('status', 'Available')->orWhere('status', 'available')->count();
+        return view('manager_module.home.index')->with('totalClients', $totalClients)
+        ->with('totalServices', $totalServices)
+        ->with('activeClients', $activeClients)
+        ->with('availableServices', $availableServices);        
     }
 
     public function showProfile(Request $req){
