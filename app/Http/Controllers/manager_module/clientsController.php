@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\manager_module\Client;
 use App\Models\manager_module\Call;
+use App\Models\manager_module\Appointment;
 
 class clientsController extends Controller
 {
@@ -26,8 +27,10 @@ class clientsController extends Controller
         //dd(DB::getQueryLog()); // Show results of log
         return view('manager_module.clients.calls')->with('client', $client)->with('calls', $calls);
     }
-    public function showClientAppointment(Request $req){
-        return view('manager_module.clients.appointments');
+    public function showClientAppointment(Request $req, $id){
+        $appointments = Appointment::all();
+        $client = Client::find($id);
+        return view('manager_module.clients.appointments')->with('client', $client)->with('appointments',$appointments);
     }
     public function showClientChat(Request $req){
         return view('manager_module.clients.chat');

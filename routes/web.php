@@ -42,4 +42,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::post('/clients/{client_id}/calls/add-call', [callsController::class, 'insertCall']);
     Route::post('/client/{client_id}/calls/edit/{call_id}', [callsController::class, 'updateCall']);
     Route::get('/clients/{client_id}/calls/delete/{call_id}', [callsController::class, 'deleteCall']);
+
+    Route::post('/clients/{client_id}/appointment/add-appointment', [appointmentsController::class, 'insertAppointment']);
+    Route::post('/clients/{client_id}/appointments/edit/{appointment_id}', [appointmentsController::class, 'updateAppointment']);
+    Route::get('/clients/{client_id}/appointments/delete/{appointment_id}', [appointmentsController::class, 'deleteAppointment']);
 });

@@ -50,20 +50,20 @@
             <div class="row mt-4 justify-content-center">
                 <div class="col col-xl-2 border rounded border-primary">
                     <div class="border-bottom text-center border-sercondary">
-                        <img class="mt-2" src="/assets/img/team/team-1.jpg" alt="No Image.."
+                        <img class="mt-2" src="{{asset('img/team/team-1.jpg')}}" alt="No Image.."
                             id="client-pro-pic"><br>
-                        <label class="mt-4" for=""><%= user[0].full_name %></label><br>
-                        <label class="mt-2" for="">Phone: 0<%= user[0].phone %></label><br>
-                        <label for="">Email: <%= user[0].email %></label>
+                        <label class="mt-4" for="">{{$client['full_name']}}</label><br>
+                        <label class="mt-2" for="">Phone: 0{{$client['phone']}}</label><br>
+                        <label for="">Email: {{$client['email']}}</label>
                     </div>
                     <div class="border-top border-primary pt-4">
                     <div class="border-top border-primary pt-4">
-                        <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>"><span class="text-light">Profile</span></a></button><br>
-                        <a class="btn btn-warning btn-block"href="/manager/show-client/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
-                        <a class="btn btn-success btn-block"href="/manager/show-client/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
-                        <a class="btn btn-danger btn-block"href="/manager/show-client/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
-                        <a class="btn btn-dark btn-block"href="/manager/show-client/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <a class="btn btn-info btn-block"href="/manager/show-client/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
+                        <a class="btn btn-primary btn-block"href="/manager/show-client/{{$client['id']}}"><span class="text-light">Profile</span></a></button><br>
+                        <a class="btn btn-warning btn-block"href="/manager/show-client/{{$client['id']}}/calls"><span class="text-light">Calls</span></a></button><br>
+                        <a class="btn btn-success btn-block"href="/manager/show-client/{{$client['id']}}/appointments"><span class="text-light">Appoitments</span></a></button><br>
+                        <a class="btn btn-danger btn-block"href="/manager/show-client/{{$client['id']}}/notes"><span class="text-light">Notes</span></a></button><br>
+                        <a class="btn btn-dark btn-block"href="/manager/show-client/{{$client['id']}}/proposals"><span class="text-light">Proposals</span></a></button><br>
+                        <a class="btn btn-info btn-block"href="/manager/show-client/{{$client['id']}}/chat"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                     </div>
                 </div>
@@ -72,6 +72,7 @@
                         <div class="row m-0 p-0">
                             <div class="col-6 bg-primary  mb-3 pt-3">
                                 <h5 class="text-light">Appointment</h5>
+                                <span class="text-danger">{{session('msg')}}</span>
                             </div>
                             <div class="col-6 text-right bg-primary  mb-3 pt-3">
                                 <button type="button" class="btn btn-success mb-3" data-toggle="modal"
@@ -91,12 +92,13 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="/clients/profile/<%= user[0].id %>/appointments" method="post">
+                                            <form action="/clients/{{$client['id']}}/appointment/add-appointment" method="post">
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col">
+                                                            @csrf
                                                             <input class="form-control" type="date" placeholder="Date"
-                                                                name="date"><br>
+                                                                name="creation_date"><br>
                                                                 <input class="form-control" type="date" placeholder="Date"
                                                                 name="appointment_date"><br>
                                                             <input class="form-control" type="text" placeholder="Title"
@@ -109,7 +111,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-warning"
                                                         data-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-success">Save changes</button>
+                                                    <button type="submit" class="btn btn-success">Add Appointment</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -128,16 +130,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% for(var i = 0; i < allNotes.length; i++) { %>
+                                        @for($i = 0; $i < count($appointments); $i++)
                                         <tr>
-                                            <td><%= allNotes[i].creation_date %></td>
-                                            <td><%= allNotes[i].appointment_date %></td>
+                                            <td>{{$appointments[$i]['creation_date']}}</td>
+                                            <td>{{$appointments[$i]['appointment_date']}}</td>
                                             <td><a tabindex="0" class="btn btn-link" role="button" data-toggle="popover"
-                                                    data-trigger="focus" title="<%= allNotes[i].title %>"
-                                                    data-content="<%= allNotes[i].body %>"><u><%= allNotes[i].title %></u></a>
+                                                    data-trigger="focus" title="{{$appointments[$i]['title']}}"
+                                                    data-content="{{$appointments[$i]['body']}}"><u>{{$appointments[$i]['title']}}</u></a>
                                             </td>
                                             <td>
-                                                <form action="/clients/profile/<%= user[0].id %>/appointments/edit/<%= allNotes[i].id %>" method="post">
+                                                <form action="/clients/{{$client['id']}}/appointments/edit/{{$appointments[$i]['id']}}" method="post">
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-block btn-info" data-toggle="modal"
                                                     data-target="#editModal">
@@ -159,14 +161,15 @@
                                                             <div class="modal-body">
                                                                 <div class="row">
                                                                     <div class="col">
+                                                                        @csrf
                                                                         <input class="form-control" type="date" placeholder="Date"
-                                                                            name="date" value="<%= allNotes[i].creation_date %>"><br>
+                                                                            name="date" value="{{$appointments[$i]['creation_date']}}"><br>
                                                                             <input class="form-control" type="date" placeholder="Date"
-                                                                            name="appointment_date" value="<%= allNotes[i].appointment_date %>"><br>
+                                                                            name="appointment_date" value="{{$appointments[$i]['appointment_date']}}"><br>
                                                                         <input class="form-control" type="text" placeholder="Title"
-                                                                            name="title" value="<%= allNotes[i].title %>"><br>
+                                                                            name="title" value="{{$appointments[$i]['title']}}"><br>
                                                                         <input class="form-control" placeholder="Body"
-                                                                            name="body" value="<%= allNotes[i].body %>"><br>
+                                                                            name="body" value="{{$appointments[$i]['body']}}"><br>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -181,10 +184,10 @@
                                                 </div>
                                             </form>
                                             </td>
-                                            <td><a href="/clients/profile/<%= user[0].id %>/appointments/delete/<%= allNotes[i].id %>"
+                                            <td><a href="/clients/{{$client['id']}}/appointments/delete/{{$appointments[$i]['id']}}"
                                                     class="btn btn-danger btn-block">Delete</a></td>
                                         </tr>
-                                        <% } %>
+                                        @endfor
                                     </tbody>
                                 </table>
                             </div>
