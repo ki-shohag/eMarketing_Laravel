@@ -49,18 +49,18 @@
             <div class="row mt-4 justify-content-center">
                 <div class="col col-xl-2 border rounded border-primary">
                     <div class="border-bottom text-center border-sercondary">
-                        <img class="mt-2" src="../../assets/img/team/team-1.jpg" alt="No Image.." id="client-pro-pic"><br>
-                        <label class="mt-4" for="">Name: <%= user[0].full_name %></label><br>
-                        <label class="mt-2" for="">Phone: 0<%= user[0].phone %></label><br>
-                        <label for="">Email: <%= user[0].email %></label>
+                        <img class="mt-2" src="{{asset('img/team/team-1.jpg')}}" alt="No Image.." id="client-pro-pic"><br>
+                        <label class="mt-4" for="">Name: {{$client['full_name']}}</label><br>
+                        <label class="mt-2" for="">Phone: 0{{$client['phone']}}</label><br>
+                        <label for="">Email: {{$client['email']}}</label>
                     </div>
                     <div class="border-top border-primary pt-4">
-                    <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>"><span class="text-light">Profile</span></a></button><br>
-                        <a class="btn btn-warning btn-block"href="/manager/show-client/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
-                        <a class="btn btn-success btn-block"href="/manager/show-client/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
-                        <a class="btn btn-danger btn-block"href="/manager/show-client/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
-                        <a class="btn btn-dark btn-block"href="/manager/show-client/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <a class="btn btn-info btn-block"href="/manager/show-client/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
+                    <a class="btn btn-primary btn-block"href="/manager/show-client/{{$client['id']}}"><span class="text-light">Profile</span></a></button><br>
+                        <a class="btn btn-warning btn-block"href="/manager/show-client/{{$client['id']}}/calls"><span class="text-light">Calls</span></a></button><br>
+                        <a class="btn btn-success btn-block"href="/manager/show-client/{{$client['id']}}/appointments"><span class="text-light">Appoitments</span></a></button><br>
+                        <a class="btn btn-danger btn-block"href="/manager/show-client/{{$client['id']}}/notes"><span class="text-light">Notes</span></a></button><br>
+                        <a class="btn btn-dark btn-block"href="/manager/show-client/{{$client['id']}}/proposals"><span class="text-light">Proposals</span></a></button><br>
+                        <a class="btn btn-info btn-block"href="/manager/show-client/{{$client['id']}}/chat"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                 </div>
                 <div class="col col-xl-6">
@@ -70,58 +70,58 @@
                                 <h5 class="text-light">Profile Details</h5>
                             </div>
                             <div class="col-6 text-right bg-primary  mb-3 pt-3">
-                                <button class="btn btn-success mb-2"><a href="/manager/show-client/<%= user[0].id %>/edit" class="text-light">Edit</a></button>
+                                <button class="btn btn-success mb-2"><a href="/manager/show-client/{{$client['id']}}/edit" class="text-light">Edit</a></button>
                             </div>
                             <div class="col-12">
                                 <table class="table table-bordered">
                                     <tbody>
                                         <tr>
                                             <td>Name : </td>
-                                            <td><%= user[0].full_name %></td>
+                                            <td>{{$client['full_name']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Phone : </td>
-                                            <td>0<%= user[0].phone %></td></td>
+                                            <td>0{{$client['phone']}}</td></td>
                                         </tr>
                                         <tr>
                                             <td>Email : </td>
-                                            <td><%= user[0].email %></td></td>
+                                            <td>{{$client['email']}}</td></td>
                                         </tr>
                                         <tr>
                                             <td>Address : </td>
-                                            <td><%= user[0].address %></td></td>
+                                            <td>{{$client['address']}}</td></td>
                                         </tr>
                                         <tr>
                                             <td>City : </td>
-                                            <td><%= user[0].city %></td></td>
+                                            <td>{{$client['city']}}</td></td>
                                         </tr>
                                         <tr>
                                             <td>Country : </td>
-                                            <td><%= user[0].country %></td>
+                                            <td>{{$client['country']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Website : </td>
-                                            <td><%= user[0].website %></td>
+                                            <td>{{$client['website']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Billing City : </td>
-                                            <td><%= user[0].billing_city %></td>
+                                            <td>{{$client['billing_city']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Billing State : </td>
-                                            <td><%= user[0].billing_state %></td>
+                                            <td>{{$client['billing_state']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Billing Zip Code : </td>
-                                            <td><%= user[0].billing_zip %></td>
+                                            <td>{{$client['billing_zip']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Billing Country : </td>
-                                            <td><%= user[0].billing_country %></td>
+                                            <td>{{$client['billing_country']}}</td>
                                         </tr>
                                         <tr>
                                             <td>Status : </td>
-                                            <td><%= user[0].status %></td>
+                                            <td>{{$client['status']}}</td>
                                         </tr>
                                     </tbody>
                                 </table>

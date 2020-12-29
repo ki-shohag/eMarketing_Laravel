@@ -52,19 +52,19 @@
             <div class="row mt-4 justify-content-center">
                 <div class="col col-xl-2 border rounded border-primary">
                     <div class="border-bottom text-center border-sercondary">
-                        <img class="mt-2" src="/assets/img/team/team-1.jpg" alt="No Image.." id="client-pro-pic"><br>
-                        <label class="mt-4" for="">Name: <%= user[0].full_name %></label><br>
-                        <label class="mt-2" for="">Phone: <%= user[0].phone %></label><br>
-                        <label for="">Email: <%= user[0].email %></label>
+                        <img class="mt-2" src="{{asset('img/team/team-1.jpg')}}" alt="No Image.." id="client-pro-pic"><br>
+                        <label class="mt-4" for="">Name: {{$client['full_name']}}</label><br>
+                        <label class="mt-2" for="">Phone: 0{{$client['phone']}}</label><br>
+                        <label for="">Email: {{$client['email']}}</label>
                     </div>
                     <div class="border-top border-primary pt-4">
                     <div class="border-top border-primary pt-4">
-                    <a class="btn btn-primary btn-block"href="/manager/show-client/<%= user[0].id %>"><span class="text-light">Profile</span></a></button><br>
-                        <a class="btn btn-warning btn-block"href="/manager/show-client/<%= user[0].id %>/calls"><span class="text-light">Calls</span></a></button><br>
-                        <a class="btn btn-success btn-block"href="/manager/show-client/<%= user[0].id %>/appointments"><span class="text-light">Appoitments</span></a></button><br>
-                        <a class="btn btn-danger btn-block"href="/manager/show-client/<%= user[0].id %>/notes"><span class="text-light">Notes</span></a></button><br>
-                        <a class="btn btn-dark btn-block"href="/manager/show-client/<%= user[0].id %>/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <a class="btn btn-info btn-block"href="/manager/show-client/<%= user[0].id %>/chat"><span class="text-light">Chat</span></a></button><br>  
+                    <a class="btn btn-primary btn-block"href="/manager/show-client/{{$client['id']}}"><span class="text-light">Profile</span></a></button><br>
+                        <a class="btn btn-warning btn-block"href="/manager/show-client/{{$client['id']}}/calls"><span class="text-light">Calls</span></a></button><br>
+                        <a class="btn btn-success btn-block"href="/manager/show-client/{{$client['id']}}/appointments"><span class="text-light">Appoitments</span></a></button><br>
+                        <a class="btn btn-danger btn-block"href="/manager/show-client/{{$client['id']}}/notes"><span class="text-light">Notes</span></a></button><br>
+                        <a class="btn btn-dark btn-block"href="/manager/show-client/{{$client['id']}}/proposals"><span class="text-light">Proposals</span></a></button><br>
+                        <a class="btn btn-info btn-block"href="/manager/show-client/{{$client['id']}}/chat"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                                 </button>
 
                                 <!-- Modal -->
-                                <form action="/clients/profile/delete/<%= user[0].id %>" method="post">
+                                
                                     <div class="modal fade text-center" id="removeModal" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -96,81 +96,81 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Name : <%= user[0].full_name %> <br>
-                                                    Email : <%= user[0].email %> <br>
-                                                    Added By : <%= user[0].added_by %> <br>
-                                                    Adding Date : <%= user[0].adding_date %> <br>
+                                                    Name : {{$client['full_name']}} <br>
+                                                    Email : {{$client['email']}} <br>
+                                                    Added By : {{$client['added_by']}} <br>
+                                                    Adding Date : {{$client['adding_date']}} <br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-warning"
                                                         data-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <a href="/manager/profile/{{$client['id']}}/delete" class="btn btn-danger">Delete</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                
                             </div>
                             <div class="col-12">
-                                <form action="/clients/profile/edit/<%= user[0].id %>" method="post">
+                                <form action="/clients/profile/edit/{{$client['id']}}" method="post">
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
                                                 <td>Name : </td>
                                                 <td><input class="form-control" type="text" placeholder="Full Name: "
-                                                        value="<%= user[0].full_name %>" name="full_name"></td>
+                                                        value="{{$client['full_name']}}" name="full_name"></td>
                                             </tr>
                                             <tr>
                                                 <td>Phone : </td>
                                                 <td><input class="form-control" type="number" placeholder="Phone: "
-                                                        value="0<%= user[0].phone %>" name="phone"></td>
+                                                        value="0{{$client['phone']}}" name="phone"></td>
                                             </tr>
                                             <tr>
                                                 <td>Email : </td>
                                                 <td><input class="form-control" type="email" placeholder="Email: "
-                                                        value="<%= user[0].email %>" name="email"></td>
+                                                        value="{{$client['email']}}" name="email"></td>
                                             </tr>
                                             <tr>
                                                 <td>Address : </td>
                                                 <td><input class="form-control" type="text" placeholder="Address:"
-                                                        value="<%= user[0].address %>" name="address"></td>
+                                                        value="{{$client['address']}}" name="address"></td>
                                             </tr>
                                             <tr>
                                                 <td>City : </td>
                                                 <td><input class="form-control" type="text" placeholder="City"
-                                                        value="<%= user[0].city %>" name="city"></td>
+                                                        value="{{$client['city']}}" name="city"></td>
                                             </tr>
                                             <tr>
                                                 <td>Country : </td>
                                                 <td><input class="form-control" type="text" placeholder="Country"
-                                                        value="<%= user[0].country %>" name="country"></td>
+                                                        value="{{$client['country']}}" name="country"></td>
                                             </tr>
                                             <tr>
                                                 <td>Website : </td>
                                                 <td><input class="form-control" type="text" placeholder="Website"
-                                                        value="<%= user[0].website %>" name="website"></td>
+                                                        value="{{$client['website']}}" name="website"></td>
                                             </tr>
                                             <tr>
                                                 <td>Billing City : </td>
                                                 <td><input class="form-control" type="text" placeholder="Billing City"
-                                                        value="<%= user[0].billing_city %>" name="billing_city"></td>
+                                                        value="{{$client['billing_city']}}" name="billing_city"></td>
                                             </tr>
                                             <tr>
                                                 <td>Billing State : </td>
                                                 <td><input class="form-control" type="text" placeholder="Billing State"
-                                                        value="<%= user[0].billing_state %>" name="billing_state"></td>
+                                                        value="{{$client['billing_state']}}" name="billing_state"></td>
                                             </tr>
                                             <tr>
                                                 <td>Billing Zip Code : </td>
                                                 <td><input class="form-control" type="number"
                                                         placeholder="Billing Zip Code"
-                                                        value="<%= user[0].billing_zip %>" name="billing_zip"></td>
+                                                        value="{{$client['billing_zip']}}" name="billing_zip"></td>
                                             </tr>
                                             <tr>
                                                 <td>Billing Country</td> : </td>
                                                 <td><input class="form-control" type="text"
                                                         placeholder="Billing Country"
-                                                        value="<%= user[0].billing_country %>" name="billing_country">
+                                                        value="{{$client['billing_country']}}" name="billing_country">
                                                 </td>
                                             </tr>
                                             <tr>

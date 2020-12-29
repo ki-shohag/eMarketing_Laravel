@@ -33,6 +33,7 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/profile/{id}/edit', [managersController::class, 'showProfileEdit']);
     Route::get('/manager/show-client/{id}', [clientsController::class, 'showClient']);
     Route::get('/manager/show-client/{id}/edit', [clientsController::class, 'showClientProfileEdit']);
+    Route::get('/manager/profile/{id}/delete', [clientsController::class, 'deleteClientProfile']);
     Route::get('/manager/show-client/{id}/calls', [clientsController::class, 'showClientCall']);
     Route::get('/manager/show-client/{id}/appointments', [clientsController::class, 'showClientAppointment']);
     Route::get('/manager/show-client/{id}/notes', [clientsController::class, 'showClientNote']);

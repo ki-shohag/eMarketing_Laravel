@@ -10,12 +10,12 @@ class clientsController extends Controller
 {
     public function index(Request $req){
         $clients = Client::all();
-        
         return view('manager_module.clients.index')->with('clients', $clients);
     }
 
-    public function showClient(Request $req){
-        return view('manager_module.clients.profile');
+    public function showClient(Request $req, $id){
+        $client = Client::find($id);
+        return view('manager_module.clients.profile')->with('client', $client);
     }
 
     public function showClientCall(Request $req){
@@ -33,7 +33,13 @@ class clientsController extends Controller
     public function showClientProposal(Request $req){
         return view('manager_module.clients.proposals');
     }
-    public function showClientProfileEdit(Request $req){
-        return view('manager_module.clients.profile_edit');
+    public function showClientProfileEdit(Request $req, $id){
+        $client = Client::find($id);
+        return view('manager_module.clients.profile_edit')->with('client', $client);
+    }
+    public function deleteClientProfile(Request $req, $id){
+        $client = Client::find($id);
+        $client->delete();
+        return $this->index($req);
     }
 }
