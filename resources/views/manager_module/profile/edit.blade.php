@@ -50,7 +50,7 @@
       <div class="row justify-content-center">
         <div class="col col-xl-5 mt-3">
           <div id="manager-profile-box">
-            <form action="/manager/profile/edit/<%= user[0].id %>" method="post">
+            <form action="/manager/profile/edit" method="post">
               <div class="bg-primary text-light pt-3 pb-2 pl-2">
                 <div class="row justify-content-between">
                   <div class="col-4">
@@ -64,10 +64,11 @@
                 </div>
               </div>
               <div class="text-center mt-3 mb-2">
-                <img src="/assets/img/team/team-1.jpg" alt="No Image.." id="manager-profile-pic">
+                <img src="{{asset('/img/team/team-1.jpg')}}" alt="No Image.." id="manager-profile-pic">
               </div>
               <table id="appointmentsTable" class="table table-striped table-bordered" style="width:100%">
                 <tbody>
+                  @csrf
                   <tr>
                     <td>Full Name : </td>
                     <td><input class="form-control" type="text" value="{{$manager['full_name']}}" name="full_name"></td>

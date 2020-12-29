@@ -30,4 +30,25 @@ class managersController extends Controller
             return redirect('/manager/login');
         }
     }
+
+    public function updateProfile(Request $req){
+        $manager = Manager::find($req->session()->get('user_id'));
+        $manager->full_name = $req->full_name;
+        $manager->company_name = $req->company_name;
+        $manager->phone = $req->phone;
+        $manager->dob = $req->dob;
+        $manager->address = $req->address;
+        $manager->city = $req->city;
+        $manager->country = $req->country;
+        $manager->country = $req->country;
+
+        if($manager->save()){
+            $req.session()->flash('msg', '*Updated manager successfully!');
+            return redirect('/manager/profile');
+        }
+        else{
+            $req.session()->flash('msg', '*Failed to updated manager!');
+            return redirect('/manager/profile');    
+        }
+    }
 }

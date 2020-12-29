@@ -34,6 +34,7 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/chat', [chatController::class, 'index']);
     Route::get('/manager/profile', [managersController::class, 'showProfile']);
     Route::get('/manager/profile/{id}/edit', [managersController::class, 'showProfileEdit']);
+    Route::post('/manager/profile/edit', [managersController::class, 'updateProfile']);
     Route::get('/manager/show-client/{id}', [clientsController::class, 'showClient']);
     Route::get('/manager/show-client/{id}/edit', [clientsController::class, 'showClientProfileEdit']);
     Route::get('/manager/profile/{id}/delete', [clientsController::class, 'deleteClientProfile']);
@@ -57,4 +58,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::post('/clients/{client_id}/proposals/add-proposal', [proposalsController::class, 'insertProposal']);
     Route::post('/clients/{client_id}/proposals/edit/{proposal_id}', [proposalsController::class, 'updateProposal']);
     Route::get('/clients/{client_id}/proposals/delete/{proposal_id}', [proposalsController::class, 'deleteProposal']);
+
+    Route::post('/services/add-service', [servicesController::class, 'insertService']);
+    Route::post('/services/update/{id}', [servicesController::class, 'updateService']);
+    Route::get('/services/delete/{id}', [servicesController::class, 'deleteService']);
 });

@@ -61,6 +61,7 @@
               <img src="{{asset('img/team/team-1.jpg')}}" alt="No Image.." id="manager-profile-pic"><br><br>
               <button class="btn btn-success btn-sm">Upload Profile Pic</button>
               <button class="btn btn-danger btn-sm">Remove Profile Pic</button><br><br>
+              <span class="text-danger">{{session('msg')}}</span>
             </div>
             <table id="appointmentsTable" class="table table-striped table-bordered" style="width:100%">
               <tbody>

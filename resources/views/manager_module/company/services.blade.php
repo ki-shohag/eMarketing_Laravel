@@ -32,8 +32,8 @@
         <ul>
             <li><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
-            <li class="active"><a href="/manager/company">Company</a></li>
-            <li><a href="/manager/services">Services</a></li>
+            <li><a href="/manager/company">Company</a></li>
+            <li class="active"><a href="/manager/services">Services</a></li>
             <li><a href="/manager/chat">Chat</a></li>
             <li><a href="/manager/profile">Profile</a></li>
             <li><a href="/manager/signout">Sign Out</a></li>
@@ -52,6 +52,7 @@
           <div class="row">
             <div class="col">
               <h4>Service Management</h4>
+              <span class="text-danger">{{session('msg')}}</span>
             </div>
             <div class="col text-right">
               <!-- Button trigger modal -->
@@ -60,7 +61,7 @@
               </button>
 
               <!-- Modal -->
-              <form action="/manager/company/services/add" method="post">
+              <form action="/services/add-service" method="post">
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -75,13 +76,14 @@
 
                         <h5 class="text-left">Service Details</h5>
                         <div class="form-row">
+                          @csrf
                           <input type="text" class="form-control mt-1" placeholder="Service Name" name="name">
                           <input type="text" class="form-control mt-1" placeholder="Type" name="type">
                           <input type="text" class="form-control mt-1" placeholder="Cost" name="cost">
                           <select name="status" class="form-control mt-1">
                             <option value="" disabled="disabled" selected="selected">Select Status</option>
                             <option value="Available">Available</option>
-                            <option value="Unavailable">Unavailable</option>s
+                            <option value="Unavailable">Unavailable</option>
                           </select>
                         </div>
                       </div>
@@ -110,15 +112,15 @@
               </tr>
             </thead>
             <tbody>
-              <% for(var i = 0; i < user.length; i++) { %>
+              @for($i = 0; $i < count($services); $i++)
               <tr>
-                <td><%= user[i].name %></td>
-                <td><%= user[i].type %></td>
-                <td><%= user[i].cost %></td>
-                <td><%= user[i].status %></td>
+                <td>{{$services[$i]['name']}}</td>
+                <td>{{$services[$i]['type']}}</td>
+                <td>{{$services[$i]['cost']}}</td>
+                <td>{{$services[$i]['status']}}</td>
 
                 <td>
-                  <form action="/manager/company/services/edit/<%= user[i].id %>" method="post">
+                  <form action="/services/update/{{$services[$i]['id']}}" method="post">
                     <button type="button" class="btn btn-block btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
                       Edit Service
                     </button>
@@ -135,13 +137,19 @@
                       <div class="modal-body">
                         <h5 class="text-left">Edit Service Details</h5>
                         <div class="form-row">
-                          <input type="text" class="form-control mt-1" placeholder="Service Name" name="name" value="<%= user[i].name %>">
-                          <input type="text" class="form-control mt-1" placeholder="Type" name="type" value="<%= user[i].type %>">
-                          <input type="text" class="form-control mt-1" placeholder="Cost" name="cost" value="<%= user[i].cost %>">
+                          @csrf
+                          <input type="text" class="form-control mt-1" placeholder="Service Name" name="name" value="{{$services[$i]['name']}}">
+                          <input type="text" class="form-control mt-1" placeholder="Type" name="type" value="{{$services[$i]['type']}}">
+                          <input type="number" class="form-control mt-1" placeholder="Cost" name="cost" value="{{$services[$i]['cost']}}">
                           <select name="status" class="form-control mt-1">
                             <option value="" disabled="disabled" selected="selected">Select Status</option>
-                            <option value="Available">Available</option>
+                            @if($services[$i]['status'] == "Available")
+                            <option value="Available" selected="selected">Available</option>
                             <option value="Unavailable">Unavailable</option>
+                            @elseif($services[$i]['status'] == "Unavailable")
+                            <option value="Available">Available</option>
+                            <option value="Unavailable" selected="selected">Unavailable</option>
+                            @endif
                           </select>
                         </div>
                       </div>
@@ -154,10 +162,10 @@
                 </div>
               </form>
 
-                  <a href="/manager/company/services/delete/<%= user[i].id %>" class="btn btn-block btn-danger">Delete</a>
+                  <a href="/services/delete/{{$services[$i]['id']}}" class="btn btn-block btn-danger">Delete</a>
                 </td>
               </tr>
-              <% } %>
+              @endfor
           </table>
         </div>
       </div>
