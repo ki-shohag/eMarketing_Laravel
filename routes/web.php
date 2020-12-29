@@ -50,4 +50,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::post('/clients/{client_id}/notes/add-note', [notesController::class, 'insertNote']);
     Route::post('/clients/{client_id}/notes/edit/{note_id}', [notesController::class, 'updateNote']);
     Route::get('/clients/{client_id}/notes/delete/{note_id}', [notesController::class, 'deleteNote']);
+
+    Route::post('/clients/{client_id}/proposals/add-proposal', [proposalsController::class, 'insertProposal']);
+    Route::post('/clients/{client_id}/proposals/edit/{proposal_id}', [proposalsController::class, 'updateProposal']);
+    Route::get('/clients/{client_id}/proposals/delete/{proposal_id}', [proposalsController::class, 'deleteProposal']);
 });

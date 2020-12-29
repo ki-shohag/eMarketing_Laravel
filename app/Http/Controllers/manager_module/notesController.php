@@ -11,13 +11,13 @@ class notesController extends Controller
 {
     public function insertNote(Request $req, $client_id){
          $client = Client::find($client_id);
-         $appointment = new Note();
-         $appointment->title = $req->title;
-         $appointment->body = $req->body;
-         $appointment->creation_date =$req->creation_date;
-         $appointment->manager_id = $req->session()->get('user_id');
-         $appointment->client_id = $client_id;
-         if($appointment->save()){
+         $note = new Note();
+         $note->title = $req->title;
+         $note->body = $req->body;
+         $note->creation_date =$req->creation_date;
+         $note->manager_id = $req->session()->get('user_id');
+         $note->client_id = $client_id;
+         if($note->save()){
              $req.session()->flash('msg', '*Added note successfully!');
              return redirect('/manager/show-client/'.$client_id.'/notes');
          }
