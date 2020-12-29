@@ -26,6 +26,7 @@ Route::get('/manager/forgot-password', [accessController::class, 'showForgotPass
 Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager-dashboard', [managersController::class, 'index']);
     Route::get('/manager/clients', [clientsController::class, 'index']);
+    Route::post('/clients/add-client', [clientsController::class, 'insertClient']);
     Route::get('/manager/company', [companyController::class, 'index']);
     Route::get('/manager/company/edit/{id}', [companyController::class, 'editCompany']);
     Route::post('/manager/company/update/{id}', [companyController::class, 'updateCompany']);

@@ -53,6 +53,7 @@
                     <div class="row">
                         <div class="col">
                             <h4>Client Management</h4>
+                            <span class="text-danger">{{session('msg')}}</span>
                         </div>
                         <div class="col text-right">
                             <!-- Button trigger modal -->
@@ -62,7 +63,7 @@
                             </button>
 
                             <!-- Modal -->
-                            <form action="/clients/add" method="post">
+                            <form action="/clients/add-client" method="post">
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -75,12 +76,13 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
+                                                @csrf
 
                                                 <h5 class="text-left">Company Details</h5>
                                                 <div class="form-row">
 
                                                     <input type="text" class="form-control mt-1"placeholder="Customer Full Name" name="full_name">
-                                                    <input type="text" class="form-control mt-1" placeholder="Phone" name="phone">
+                                                    <input type="number" class="form-control mt-1" placeholder="Phone" name="phone">
                                                     <input type="text" class="form-control mt-1" placeholder="Address" name="address">
                                                     <input type="text" class="form-control mt-1" placeholder="City" name="city">
                                                     <input type="text" class="form-control mt-1" placeholder="Country" name="country">
@@ -90,12 +92,12 @@
                                                 <div class="form-row">
                                                     <input type="text" class="form-control mt-1" placeholder="City" name="billing_city">
                                                     <input type="text" class="form-control mt-1" placeholder="State" name="billing_state">
-                                                    <input type="text" class="form-control mt-1" placeholder="Zip Code" name="billing_zip">
+                                                    <input type="number" class="form-control mt-1" placeholder="Zip Code" name="billing_zip">
                                                     <input type="text" class="form-control mt-1" placeholder="Country" name="billing_country">
                                                 </div>
                                                 <h5 class="mt-3 text-left">Account Login</h5>
                                                 <div class="form-row">
-                                                    <input type="text" class="form-control mt-1" placeholder="Email" name="email">
+                                                    <input type="email" class="form-control mt-1" placeholder="Email" name="email">
                                                     <input type="text" class="form-control mt-1" placeholder="Password" name="password">
                                                     <input type="text" class="form-control mt-1" placeholder="Status" name="status">
                                                 </div>

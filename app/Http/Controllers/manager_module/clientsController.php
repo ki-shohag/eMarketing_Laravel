@@ -9,6 +9,7 @@ use App\Models\manager_module\Call;
 use App\Models\manager_module\Appointment;
 use App\Models\manager_module\Note;
 use App\Models\manager_module\Proposal;
+use App\Models\manager_module\Manager;
 use Illuminate\Support\Facades\App;
 
 class clientsController extends Controller
@@ -17,6 +18,36 @@ class clientsController extends Controller
         $clients = Client::all();
         return view('manager_module.clients.index')->with('clients', $clients);
     }
+
+    public function insertClient(Request $req){
+        $manager = Manager::find($req->session()->get('user_id'));
+
+        $client = new Client();
+        $client->full_name = $req->full_name;
+        $client->phone = $req->phone;
+        $client->address = $req->address;
+        $client->city = $req->city;
+        $client->country = $req->country;
+        $client->website = $req->website;
+        $client->billing_city = $req->billing_city;
+        $client->billing_country = $req->country;
+        $client->billing_zip= $req->billing_zip;
+        $client->billing_state = $req->billing_state;
+        $client->email = $req->email;
+        $client->password = $req->password;
+        $client->status = $req->status;
+        $client->added_by = $manager['full_name'];
+        $client->adding_date = date("Y-m-d");
+
+        if($client->save()){
+            $req.session()->flash('msg', '*Added new client successfully!');
+            return redirect('/manager/clients');
+        }
+        else{
+            $req.session()->flash('msg', '*Failed to add new client!');
+            return redirect('/manager/clients');
+        }
+}
 
     public function showClient(Request $req, $id){
         $client = Client::find($id);
