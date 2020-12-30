@@ -211,7 +211,7 @@
                                                     </div>
                                                 </form>
                                                 <a class="btn btn-block btn-danger" href="/clients/{{$client['id']}}/proposals/delete/{{$proposals[$i]['id']}}">Delete</a>
-                                                <a href="/clients/{{$client['id']}}/proposals/{{$proposals[$i]['id']}}" class="btn btn-block btn-primary ">Download PDF</a>
+                                                <a href="/clients/{{$client['id']}}/proposals/{{$proposals[$i]['id']}}" class="btn btn-block btn-primary ">Download PDF/Excel</a>
                                             </td>
                                         </tr>
                                         @endfor

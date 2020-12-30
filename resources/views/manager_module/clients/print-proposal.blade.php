@@ -71,7 +71,7 @@
                             <th>Quantity</th>
                             <th>Rate</th>
                         </tr>
-                            <tr>
+                            <tr class="">
                                 <td>{{$proposal['title']}}</td>
                                 <td>{{$proposal['subject']}}</td>
                                 <td>{{$proposal['body']}}</td>
@@ -92,7 +92,8 @@
                             </tr>
                     </table>
                     <div class="text-center" id="printBtnID">
-                        <button class="btn w-50 btn-success" onclick="printMe('printBtnID','proposalTable');">Print/Download</button>
+                        <button class="btn w-25 btn-success" onclick="printMe('printBtnID','proposalTable');">Print/Download PDF</button>
+                        <button id="excelDownloadBtn" class="btn w-25 btn-info">Download Excel File</button>
                     </div>
                 </div>
             </div>
@@ -133,6 +134,8 @@
   <script src="{{asset('vendor/aos/aos.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
   <script src="{{asset('js/printProposal.js')}}"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{asset('js/jquery.table2excel.js')}}"></script>
 
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>

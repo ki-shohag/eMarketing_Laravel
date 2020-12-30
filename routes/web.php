@@ -35,6 +35,8 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/chat', [chatController::class, 'index']);
     Route::get('/manager/chat/{client_id}', [chatController::class, 'showClientChat']);
     Route::post('/manager/chat/searchUser', [chatController::class, 'getUser']);
+    Route::post('/manager/chat/send-message', [chatController::class, 'sendMessage']);
+    Route::post('/manager/chat/get-chat', [chatController::class, 'getChat']);
 
     Route::get('/manager/profile', [managersController::class, 'showProfile']);
     Route::get('/manager/profile/{id}/edit', [managersController::class, 'showProfileEdit']);

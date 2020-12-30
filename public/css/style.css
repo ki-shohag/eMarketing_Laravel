@@ -1960,7 +1960,7 @@ section {
   border-radius: 50%;
 }
 #login-box{
-  padding-top: 120px;
+  padding-top: 15px;
   border: 1px #0BB5FF solid;
   border-radius: 15px;
   min-height: 500px;
@@ -1972,4 +1972,15 @@ section {
 }
 .active-cyan .fa, .active-cyan-2 .fa {
   color: #4dd0e1;
+}
+::-webkit-input-placeholder { /* Edge */
+  color: white;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fff;
+}
+
+::placeholder {
+  color: #fff;
 }

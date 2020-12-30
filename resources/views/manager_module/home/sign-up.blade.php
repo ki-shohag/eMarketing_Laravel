@@ -30,9 +30,9 @@
 
   <main id="main">
     <section>
-        <div class="row justify-content-center mt-5 mb-5">
-            <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
-                <h2>Sign Up</h2><br>
+        <div class="row justify-content-center">
+            <div class="col col-sm-7 col-lg-5 col-xl-3 text-center" id="login-box">
+                <h2>Sign Up</h2>
                 <h5 class="text-danger"><i><b>{{session('msg')}}</b></i></h5><br>
                 <form method="post" action="/manager/signup">
                 @csrf

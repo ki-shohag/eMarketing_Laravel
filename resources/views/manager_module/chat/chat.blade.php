@@ -30,7 +30,7 @@
             <li><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
             <li><a href="/manager/company">Company</a></li>
-            <li><a href="/manager/company/services">Services</a></li>
+            <li><a href="/manager/services">Services</a></li>
             <li class="active"><a href="/manager/chat">Chat</a></li>
             <li><a href="/manager/profile">Profile</a></li>
             <li><a href="/manager/signout">Sign Out</a></li>
@@ -62,14 +62,16 @@
                   <div class="bg-success rounded text-white pt-3 text-right pr-4">
                     <label id="clientNameLabel" value="1" for="">{{$client_name}}</label>
                   </div><br>
-                  @foreach($chat as $chat)
-                  @if($chat['sent_from']=='Manager')
-                  <span for="" class="bg-success text-light p-1 rounded float-right">{{$chat['body']}}</span><br>
-                  @endif
-                  @if($chat['sent_from']=='Client')
-                  <span for="" class="bg-info p-1 text-light rounded text-left">{{$chat['body']}}</span><br>
-                  @endif
-                  @endforeach
+                  <div id="msgBoxSection">
+                    @foreach($chat as $chat)
+                    @if($chat['sent_from']=='Manager')
+                    <br><span for="" class="bg-success text-light btn-block text-right p-1 rounded float-right">{{$chat['body']}}</span><br>
+                    @endif
+                    @if($chat['sent_from']=='Client')
+                    <br><span for="" class="bg-info p-1 text-light btn-block rounded text-left">{{$chat['body']}}</span><br>
+                    @endif
+                    @endforeach
+                  </div>
                   <br><br><textarea id="textMsg" class="form-control border border-success rounded mb-2" name="" id="" cols="90" rows="2" placeholder="Send Message..."></textarea>
                   <button id="sendMsgBtn" class="btn btn-success btn-block">Send</button><br>
                 </div>

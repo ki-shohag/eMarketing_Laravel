@@ -21,7 +21,7 @@ class chatController extends Controller
     public function showClientChat(Request $req, $client_id){
         $clients = Client::all();
         $manager = Manager::find($req->session()->get('user_id'));
-        $chat = Chat::orderBy('sent_at', 'DESC')
+        $chat = Chat::orderBy('chat.id', 'ASC')
         ->leftJoin('clients', 'clients.id','=','chat.client_id')
         ->select('clients.full_name', 'chat.body', 'chat.sent_at', 'chat.sent_from')
         ->where('clients.id',$client_id)
@@ -50,5 +50,56 @@ class chatController extends Controller
         $userName = $req->userName;
         $client = Client::where('full_name','LIKE','%'.$req->userName.'%')->get()->first();
         return $client;
+    }
+
+    public function sendMessage(Request $req){
+        $client = Client::where('full_name',$req->clientName)->get()->first();
+        $client_id = $client['id'];
+
+        $chat = new Chat();
+        $chat->body = $req->message;
+        $chat->client_id = $client['id'];
+        $chat->manager_id = $req->session()->get('user_id');
+        $chat->sent_from = 'Manager';
+        $chat->sent_at = date("Y-m-d H:m:s");
+        
+        if($chat->save()){
+            
+            $chat = Chat::orderBy('chat.id', 'DESC')
+            ->leftJoin('clients', 'clients.id','=','chat.client_id')
+            ->select('clients.full_name', 'chat.body', 'chat.sent_at', 'chat.sent_from')
+            ->where('clients.id',$client_id)
+            ->get();
+            
+            if(isset($chat[0])){
+                return $chat;  
+            }
+            else{
+                //print_r($chat);
+                return 'Failed!';
+            }
+        }
+        else{
+            return 'Unsucessful!';
+        }
+    }
+
+    public function getChat(Request $req){
+        $client = Client::where('full_name',$req->clientName)->get()->first();
+        $client_id = $client['id'];
+        
+        $chat = Chat::orderBy('chat.id', 'DESC')
+        ->leftJoin('clients', 'clients.id','=','chat.client_id')
+        ->select('clients.full_name', 'chat.body', 'chat.sent_at', 'chat.sent_from')
+        ->where('clients.id',$client_id)
+        ->get();
+        
+        if(isset($chat[0])){
+            return $chat;  
+        }
+        else{
+            //print_r($chat);
+            return 'Failed!';
+        }
     }
 }

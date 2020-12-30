@@ -29,7 +29,7 @@
             <li><a href="/manager-dashboard">Dashboard</a></li>
             <li><a href="/manager/clients">Clients</a></li>
             <li><a href="/manager/company">Company</a></li>
-            <li><a href="/manager/company/services">Services</a></li>
+            <li><a href="/manager/services">Services</a></li>
             <li class="active"><a href="/manager/chat">Chat</a></li>
             <li><a href="/manager/profile">Profile</a></li>
             <li><a href="/manager/signout">Sign Out</a></li>

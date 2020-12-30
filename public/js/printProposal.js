@@ -19,3 +19,15 @@ function printMe(a,e){
     document.body.innerHTML = restorePage;
 
 }
+$("#excelDownloadBtn").on('click',function(){
+    $("#proposalTable").table2excel({
+      exclude: ".noExl",
+      name: "Worksheet Name",
+      filename: "Proposal", //do not include extension
+      fileext: ".xls", // file extension
+      preserveColors: true,
+      exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true
+    }); 
+});
