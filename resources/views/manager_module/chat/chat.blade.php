@@ -6,6 +6,7 @@
   <title>Chat</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{asset('img/favicon.png')}}" rel="icon">
   <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -48,27 +49,29 @@
             <div class="col col-xl-8">
               <div class="row justify-content-around">
                 <div class="col-12 col-xl-3 bg-success text-white rounded"><br>
-                  
-                    @foreach($clients as $client)
-                    <a href="/manager/chat/{{ $client['id']}}" class="btn btn-success btn-block btn-sm text-left border border-secondary">{{$client['full_name']}}</a><br>
-                    @endforeach
+                    <input type="text" id="searchBox" class="form-control bg-transparent text-white border border-light" placeholder="Search clients..."><br>
+                    <div id="clientSearchBox">
+                    </div>
+                    <div id="clientBox">
+                        @foreach($clients as $client)
+                        <a href="/manager/chat/{{ $client['id']}}" class="btn btn-success btn-block btn-sm text-left border border-light">{{$client['full_name']}}</a><br>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="col-12 col-xl-8 border border-success pt-2">
-                  <div class="bg-success text-white pt-3 text-right pr-4">
-                    <label for="">User Name</label>
+                <div class="col-12 col-xl-8 border rounded border-success pt-2">
+                  <div class="bg-success rounded text-white pt-3 text-right pr-4">
+                    <label id="clientNameLabel" value="1" for="">{{$client_name}}</label>
                   </div><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <textarea name="" id="" cols="100" rows="10">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias facere similique ipsum sit eum eos quisquam asperiores voluptas nihil eligendi necessitatibus, rerum alias soluta fugiat dicta voluptatibus totam nisi? Repellat.
-                  </textarea>
-                  <button class="btn btn-success btn-block">Send</button>
+                  @foreach($chat as $chat)
+                  @if($chat['sent_from']=='Manager')
+                  <span for="" class="bg-success text-light p-1 rounded float-right">{{$chat['body']}}</span><br>
+                  @endif
+                  @if($chat['sent_from']=='Client')
+                  <span for="" class="bg-info p-1 text-light rounded text-left">{{$chat['body']}}</span><br>
+                  @endif
+                  @endforeach
+                  <br><br><textarea id="textMsg" class="form-control border border-success rounded mb-2" name="" id="" cols="90" rows="2" placeholder="Send Message..."></textarea>
+                  <button id="sendMsgBtn" class="btn btn-success btn-block">Send</button><br>
                 </div>
               </div>
             </div>
@@ -110,6 +113,10 @@
   <script src="{{asset('vendor/aos/aos.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
   <script src="{{asset('js/chat.js')}}"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </body>
 
 </html>

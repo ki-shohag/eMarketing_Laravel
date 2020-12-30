@@ -49,9 +49,9 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-xl-12">
                     <div class="text-center">
-                        <br><h2><b><i><u>Proposal-00{{$proposal['id']}}</u></i></b></h2><br>
+                        <br><h2><b><i><u>Proposal Details</u></i></b></h2><br>
                     </div>
-                    <table id="proposalTable" class="table table-bordered">
+                    <table id="proposalTable" class="table table-bordered table-hover">
                         <tr>
                             <th>Title</th>
                             <th>Subject</th>
@@ -64,7 +64,6 @@
                             <th>Status</th>
                             <th>Address</th>
                             <th>City</th>
-                            <th>State</th>
                             <th>Country</th>
                             <th>Zip Code</th>
                             <th>Phone</th>
@@ -81,7 +80,6 @@
                                 <td>{{$proposal['company_name']}}</td>
                                 <td>{{$proposal['starting_date']}}</td>
                                 <td>{{$proposal['deadline_date']}}</td>
-                                <td>{{$proposal['status']}}</td>
                                 <td>{{$proposal['address']}}</td>
                                 <td>{{$proposal['city']}}</td>
                                 <td>{{$proposal['state']}}</td>

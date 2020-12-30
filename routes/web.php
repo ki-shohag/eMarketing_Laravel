@@ -31,7 +31,11 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/company/edit/{id}', [companyController::class, 'editCompany']);
     Route::post('/manager/company/update/{id}', [companyController::class, 'updateCompany']);
     Route::get('/manager/services', [servicesController::class, 'index']);
+
     Route::get('/manager/chat', [chatController::class, 'index']);
+    Route::get('/manager/chat/{client_id}', [chatController::class, 'showClientChat']);
+    Route::post('/manager/chat/searchUser', [chatController::class, 'getUser']);
+
     Route::get('/manager/profile', [managersController::class, 'showProfile']);
     Route::get('/manager/profile/{id}/edit', [managersController::class, 'showProfileEdit']);
     Route::post('/manager/profile/edit', [managersController::class, 'updateProfile']);
