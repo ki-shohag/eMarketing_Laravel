@@ -105,7 +105,6 @@
                                                             <input class="form-control" type="text" placeholder="Customer" name="customer_name"><br>
                                                             <input class="form-control" type="date" placeholder="Date" name="starting_date"><br>
                                                             <input class="form-control" type="date" placeholder="Deadline Date" name="deadline_date"><br>
-                                                            <input class="form-control" type="text" placeholder="Status" name="status"><br>
                                                             <input class="form-control" type="text" placeholder="Address" name="address"><br>
                                                             <input class="form-control" type="text" placeholder="City" name="city"><br>
                                                             <input class="form-control" type="text" placeholder="State" name="state"><br>
@@ -114,8 +113,19 @@
                                                             <input class="form-control" type="email" placeholder="Email" name="email"><br>
                                                             <input class="form-control" type="number" placeholder="Phone" name="phone"><br>
                                                             <input class="form-control" type="text" placeholder="Select Item" name="item"><br>
+                                                            <select name="item" class="form-control">
+                                                            <option disabled="disabled" selected="selected">Select a service</option>
+                                                            @foreach($services as $services)
+                                                                <option value="{{$services['name']}}">{{$services['name']}}</option>
+                                                            @endforeach
+                                                            </select><br>
+                                                            <select name="status" class="form-control">
+                                                                <option disabled="disabled" selected="selected">Select a status</option>
+                                                                <option value="Available">Available</option>
+                                                                <option value="Unavailable">Unavailable</option>
+                                                            </select><br>
                                                             <input class="form-control" type="number" placeholder="Quantity" name="quantity"><br>
-                                                            <input class="form-control" type="number" placeholder="Price Rate Pcs" name="rate"><br>
+                                                            <input class="form-control" type="number"  placeholder="Price Rate Pcs" name="rate"><br>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,9 +210,8 @@
                                                         </div>
                                                     </div>
                                                 </form>
-
                                                 <a class="btn btn-block btn-danger" href="/clients/{{$client['id']}}/proposals/delete/{{$proposals[$i]['id']}}">Delete</a>
-                                                <a href="/clients/profile/<%= user[0].id %>/proposal/<%= allNotes[i].id %>" class="btn btn-block btn-primary ">Download PDF</a>
+                                                <a href="/clients/{{$client['id']}}/proposals/{{$proposals[$i]['id']}}" class="btn btn-block btn-primary ">Download PDF</a>
                                             </td>
                                         </tr>
                                         @endfor

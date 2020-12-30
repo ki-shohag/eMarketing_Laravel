@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\manager_module;
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -10,8 +11,9 @@ use App\Models\manager_module\Company;
 
 class proposalsController extends Controller
 {
-    public function insertProposal(Request $req, $client_id){        
-        $company = Company::where('manager_id',$req->session()->get('user_id'))->get()->first();
+    public function insertProposal(Request $req, $client_id)
+    {
+        $company = Company::where('manager_id', $req->session()->get('user_id'))->get()->first();
         $proposal = new Proposal();
         $proposal->title = $req->title;
         $proposal->subject = $req->subject;
@@ -34,17 +36,17 @@ class proposalsController extends Controller
         $proposal->manager_id = $req->session()->get('user_id');
         $proposal->company_id = $company['id'];
 
-        if($proposal->save()){
-            $req.session()->flash('msg', '*Added proposal successfully!');
-            return redirect('/manager/show-client/'.$client_id.'/proposals');
+        if ($proposal->save()) {
+            $req . session()->flash('msg', '*Added proposal successfully!');
+            return redirect('/manager/show-client/' . $client_id . '/proposals');
+        } else {
+            $req . session()->flash('msg', '*Could not insert proposal!');
+            return redirect('/manager/show-client/' . $client_id . '/proposals');
         }
-        else{
-            $req.session()->flash('msg', '*Could not insert proposal!');
-            return redirect('/manager/show-client/'.$client_id.'/proposals');
-        }
-   }
+    }
 
-   public function updateProposal(Request $req, $client_id, $proposal_id){
+    public function updateProposal(Request $req, $client_id, $proposal_id)
+    {
         $proposal = Proposal::find($proposal_id);
         $proposal->title = $req->title;
         $proposal->subject = $req->subject;
@@ -64,26 +66,34 @@ class proposalsController extends Controller
         $proposal->quantity = $req->quantity;
         $proposal->rate = $req->rate;
 
-        if($proposal->save()){
-            $req.session()->flash('msg', '*Updated proposal successfully!');
-            return redirect('/manager/show-client/'.$client_id.'/proposals');
+        if ($proposal->save()) {
+            $req . session()->flash('msg', '*Updated proposal successfully!');
+            return redirect('/manager/show-client/' . $client_id . '/proposals');
+        } else {
+            $req . session()->flash('msg', '*Could not update proposal!');
+            return redirect('/manager/show-client/' . $client_id . '/proposals');
         }
-        else{
-            $req.session()->flash('msg', '*Could not update proposal!');
-            return redirect('/manager/show-client/'.$client_id.'/proposals');
-        }
-   }
+    }
 
-   
-   public function deleteProposal(Request $req,$client_id,$proposal_id){
-    $proposal = Proposal::find($proposal_id);
-    if($proposal->delete()){
-     $req.session()->flash('msg', '*Deleted Proposals!');
-     return redirect('/manager/show-client/'.$client_id.'/proposals');
+
+    public function deleteProposal(Request $req, $client_id, $proposal_id)
+    {
+        $proposal = Proposal::find($proposal_id);
+        if ($proposal->delete()) {
+            $req . session()->flash('msg', '*Deleted Proposals!');
+            return redirect('/manager/show-client/' . $client_id . '/proposals');
+        } else {
+            $req . session()->flash('msg', '*Could not delete Proposal!');
+            return redirect('/manager/show-client/' . $client_id . '/proposals');
+        }
     }
-    else{
-     $req.session()->flash('msg', '*Could not delete Proposal!');
-     return redirect('/manager/show-client/'.$client_id.'/proposals');
+
+    public function showProposalPDF(Request $req, $client_id, $proposal_id){
+        $proposal = Proposal::where('proposal.id', $proposal_id)
+        ->leftJoin('company', 'company.id','=','proposal.company_id')
+        ->leftJoin('manager', 'manager.id','=','proposal.manager_id')
+        ->get()->first();
+        return view('manager_module.clients.print-proposal')
+        ->with('proposal', $proposal);
     }
-}
 }

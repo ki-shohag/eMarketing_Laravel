@@ -64,7 +64,7 @@
               <tbody>
                 <tr>
                   <td>Company Name</td>
-                  <td> {{$company['name']}} </td>
+                  <td> {{$company['company_name']}} </td>
                 </tr>
                 <tr>
                   <td>Address : </td>

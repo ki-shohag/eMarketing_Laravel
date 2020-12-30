@@ -47,9 +47,9 @@
 
         <section>
             <div class="row justify-content-center">
-                <div class="col-12 col-xl-10">
+                <div class="col-12 col-xl-12">
                     <div class="text-center">
-                        <br><h2><b><i><u>Proposal</u></i></b></h2><br>
+                        <br><h2><b><i><u>Proposal-00{{$proposal['id']}}</u></i></b></h2><br>
                     </div>
                     <table id="proposalTable" class="table table-bordered">
                         <tr>
@@ -57,6 +57,8 @@
                             <th>Subject</th>
                             <th>Body</th>
                             <th>Customer Name</th>
+                            <th>Proposed By</th>
+                            <th>Company</th>
                             <th>Starting Date</th>
                             <th>Deadline</th>
                             <th>Status</th>
@@ -65,34 +67,31 @@
                             <th>State</th>
                             <th>Country</th>
                             <th>Zip Code</th>
-                            <th>Email</th>
                             <th>Phone</th>
                             <th>Item</th>
                             <th>Quantity</th>
                             <th>Rate</th>
                         </tr>
-                        <% if(allNotes!=null) { for(var i=0; i< allNotes.length; i++) { %>
                             <tr>
-                                <td><%= allNotes[i].title %></td>
-                                <td><%= allNotes[i].subject %></td>
-                                <td><%= allNotes[i].body %></td>
-                                <td><%= allNotes[i].customer_name %></td>
-                                <td><%= allNotes[i].starting_date %></td>
-                                <td><%= allNotes[i].deadline_date %></td>
-                                <td><%= allNotes[i].status %></td>
-                                <td><%= allNotes[i].address %></td>
-                                <td><%= allNotes[i].city %></td>
-                                <td><%= allNotes[i].state %></td>
-                                <td><%= allNotes[i].country %></td>
-                                <td><%= allNotes[i].zip_code %></td>
-                                <td><%= allNotes[i].email %></td>
-                                <td>0<%= allNotes[i].phone %></td>
-                                <td><%= allNotes[i].item %></td>
-                                <td><%= allNotes[i].quantity %></td>
-                                <td><%= allNotes[i].rate %></td>
+                                <td>{{$proposal['title']}}</td>
+                                <td>{{$proposal['subject']}}</td>
+                                <td>{{$proposal['body']}}</td>
+                                <td>{{$proposal['customer_name']}}</td>
+                                <td>{{$proposal['full_name']}}</td>
+                                <td>{{$proposal['company_name']}}</td>
+                                <td>{{$proposal['starting_date']}}</td>
+                                <td>{{$proposal['deadline_date']}}</td>
+                                <td>{{$proposal['status']}}</td>
+                                <td>{{$proposal['address']}}</td>
+                                <td>{{$proposal['city']}}</td>
+                                <td>{{$proposal['state']}}</td>
+                                <td>{{$proposal['country']}}</td>
+                                <td>{{$proposal['zip_code']}}</td>
+                                <td>0{{$proposal['phone']}}</td></td>
+                                <td>{{$proposal['item']}}</td>
+                                <td>{{$proposal['quantity']}}</td>
+                                <td>{{$proposal['rate']}}</td>
                             </tr>
-    
-                        <% } } %>
                     </table>
                     <div class="text-center" id="printBtnID">
                         <button class="btn w-50 btn-success" onclick="printMe('printBtnID','proposalTable');">Print/Download</button>

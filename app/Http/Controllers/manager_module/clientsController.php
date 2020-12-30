@@ -10,6 +10,7 @@ use App\Models\manager_module\Appointment;
 use App\Models\manager_module\Note;
 use App\Models\manager_module\Proposal;
 use App\Models\manager_module\Manager;
+use App\Models\manager_module\Service;
 use Illuminate\Support\Facades\App;
 
 class clientsController extends Controller
@@ -77,7 +78,13 @@ class clientsController extends Controller
     public function showClientProposal(Request $req, $id){
         $proposals = Proposal::where('manager_id',$req->session()->get('user_id'))->get();
         $client = Client::find($id);
-        return view('manager_module.clients.proposals')->with('client', $client)->with('proposals', $proposals);
+        $services = Service::leftJoin('company', function ($join){
+            $join->on('service.company_id', '=', 'company.id');
+        })->get();
+        return view('manager_module.clients.proposals')
+        ->with('client', $client)
+        ->with('proposals', $proposals)
+        ->with('services', $services);
     }
     public function showClientProfileEdit(Request $req, $id){
         $client = Client::find($id);
