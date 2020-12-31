@@ -56,6 +56,10 @@ class managersController extends Controller
                 return redirect('/manager/profile');
             }
         }
+        else{
+            $req.session()->flash('msg', '*Failed to update Profile Picture!');
+            return redirect('/manager/profile');
+        }
     }
 
     public function updateProfile(Request $req){
