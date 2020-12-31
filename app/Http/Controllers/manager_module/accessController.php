@@ -85,5 +85,5 @@ class accessController extends Controller
         $req->session()->flush();
         return view('manager_module.home.forgot-password');
     }
-
+    
 }

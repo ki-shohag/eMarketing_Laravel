@@ -110,14 +110,15 @@ $(document).ready(function(){
                     console.log('Success');
                 }else{
                     console.log(response);
-                        if(response[0].sent_from=='Manager'){
-                            $('#msgBoxSection').append("<br><span class="+"bg-success w-100 btn-block text-right text-light p-1 rounded float-right"+">"+response[0].body+"</span><br>");
-                            $('#textMsg').val('');
+                    $("#msgBoxSection").html("");
+                    for(var i=response.length-1;i>=0; i--){
+                        if(response[i].sent_from=='Manager'){
+                            $("#msgBoxSection").append("<br><span class="+"bg-warning w-100 btn-block text-right text-dark p-1 rounded float-right"+">"+response[i].body+"</span><br>");
                         }
-                        else if(response[0].sent_from=='Client'){
-                            $('#msgBoxSection').append("<br><span class="+"bg-info p-1 w-100 btn-block text-light rounded text-left"+">"+response[0].body+"</span><br></br>");
-                            $('#textMsg').val('');
+                        else if(response[i].sent_from=='Client'){
+                            $$("#msgBoxSection").append("<br><span class="+"bg-info p-1 w-100 btn-block text-light rounded text-left"+">"+response[i].body+"</span><br></br>");
                         }
+                    }
                 }
             },
             error:function(response){
@@ -125,5 +126,5 @@ $(document).ready(function(){
                 console.log('Error');
             }
         });
-    },30000);
+    },5000);
 });

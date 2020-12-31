@@ -72,7 +72,7 @@ class chatController extends Controller
             ->get();
             
             if(isset($chat[0])){
-                return $chat;  
+                return $chat;
             }
             else{
                 //print_r($chat);

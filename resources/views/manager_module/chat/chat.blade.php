@@ -65,7 +65,7 @@
                   <div id="msgBoxSection">
                     @foreach($chat as $chat)
                     @if($chat['sent_from']=='Manager')
-                    <br><span for="" class="bg-success text-light btn-block text-right p-1 rounded float-right">{{$chat['body']}}</span><br>
+                    <br><span for="" class="bg-warning text-dark btn-block text-right p-1 rounded float-right">{{$chat['body']}}</span><br>
                     @endif
                     @if($chat['sent_from']=='Client')
                     <br><span for="" class="bg-info p-1 text-light btn-block rounded text-left">{{$chat['body']}}</span><br>
