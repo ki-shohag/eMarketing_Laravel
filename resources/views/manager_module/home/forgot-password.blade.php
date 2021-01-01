@@ -34,9 +34,11 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
                 <h2>Forgot your password?</h2><br>
-                <form action="/manager/forgot-password" method="post">
-                  <input class="form-control"type="text" placeholder="Enter your email..." name="email"><br>
-                  <button class="btn btn-primary btn-block" type="submit">Submit</button><br>
+                <span class="text-danger">{{session('msg')}}</span><br>
+                <form method="post" action="/manager/forgot-password">
+                  @csrf
+                  <input class="form-control" type="text" placeholder="Enter your email..." name="email"><br>
+                  <button type="submit" class="btn btn-primary btn-block">Submit</button><br>
                 </form>
             </div>
         </div>

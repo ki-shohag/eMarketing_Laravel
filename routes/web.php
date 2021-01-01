@@ -11,6 +11,7 @@ use App\Http\Controllers\manager_module\proposalsController;
 use App\Http\Controllers\manager_module\servicesController;
 use App\Http\Controllers\manager_module\accessController;
 use App\Http\Controllers\manager_module\chatController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +23,11 @@ Route::get('/manager/signout', [accessController::class, 'showSignOutPage']);
 Route::get('/manager/signup', [accessController::class, 'showSignUpPage']);
 Route::post('/manager/signup', [accessController::class, 'storeManager']);
 Route::get('/manager/forgot-password', [accessController::class, 'showForgotPasswordPage']);
+Route::post('/manager/forgot-password', [accessController::class, 'validateEmail']);
+Route::get('/manager/verify-code', [accessController::class, 'showVerifyCodePage']);
+Route::post('/manager/verify-code', [accessController::class, 'verifyCode']);
+Route::get('/manager/reset-password', [accessController::class, 'showResetPasswordPage']);
+Route::post('/manager/reset-password', [accessController::class, 'changePassword']);
 
 Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager-dashboard', [managersController::class, 'index']);
@@ -47,7 +53,7 @@ Route::group(['middleware'=>['sess']], function () {
     Route::get('/manager/show-client/{id}/calls', [clientsController::class, 'showClientCall']);
     Route::get('/manager/show-client/{id}/appointments', [clientsController::class, 'showClientAppointment']);
     Route::get('/manager/show-client/{id}/notes', [clientsController::class, 'showClientNote']);
-    Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);    
+    Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);
 
     Route::post('/manager/upload-profile-pic', [managersController::class, 'uploadProfilePic']);
 

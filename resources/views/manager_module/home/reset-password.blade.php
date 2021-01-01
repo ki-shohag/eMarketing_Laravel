@@ -24,7 +24,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/manager">CRM Spot</a></h1>
+      <h1 class="logo mr-auto"><a href="/manager-dashboard">CRM Spot</a></h1>
       <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>
@@ -35,7 +35,9 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
                 <h2>Reset Password</h2><br>
+                <span class="text-danger">{{session('msg')}}</span><br>
                 <form action="/manager/reset-password" method="post">
+                @csrf
                   <input class="form-control"type="password" placeholder="New Password" name="password"><br>
                   <input class="form-control"type="password" placeholder="Re-enter Password" name="confirm_password"><br>
                   <button type="submit" class="btn btn-primary btn-block">Submit</button><br>

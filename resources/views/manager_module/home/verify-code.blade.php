@@ -34,9 +34,11 @@
     <section>
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
-              <h3>Hello, <b><i><%= user_name %></i></b></h3>
+              <h3>Hello, <b><i>{{$manager['full_name']}}</i></b></h3>
                 <h5>Enter the verification code sent to your email address:</h5><br>
+                <span class="text-danger">{{session('msg')}}</span><br>
                 <form method="post" action="/manager/verify-code">
+                  @csrf
                   <input class="form-control"type="number" name="verification_code" placeholder="Code"><br>
                   <button class="btn btn-primary btn-block">Verify</button><br>
                 </form>
