@@ -34,17 +34,20 @@
             <div class="col col-sm-7 col-lg-5 col-xl-3 text-center" id="login-box">
                 <h2>Sign Up</h2>
                 <h5 class="text-danger"><i><b>{{session('msg')}}</b></i></h5><br>
+                @foreach($errors->all() as $err)
+                <span class="text-danger">*{{$err}}</span><br>
+                @endforeach
                 <form method="post" action="/manager/signup">
                 @csrf
-                <input class="form-control"type="text" placeholder="Full Name" name="full_name"><br>
-                <input class="form-control"type="text" placeholder="User Name" name="user_name"><br>
-                <input class="form-control"type="email" placeholder="Email" name="email"><br>
-                <input class="form-control"type="number" placeholder="Phone" name="phone"><br>
-                <input class="form-control"type="date" placeholder="Date of Birth" name="dob"><br>
-                <input class="form-control"type="text" placeholder="Address" name="address"><br>
-                <input class="form-control"type="text" placeholder="City" name="city"><br>
-                <input class="form-control"type="text" placeholder="Country" name="country"><br>
-                <input class="form-control"type="text" placeholder="Company Name" name="company_name"><br>
+                <input class="form-control"type="text" placeholder="Full Name" value="{{ old('full_name') }}" name="full_name"><br>
+                <input class="form-control"type="text" placeholder="User Name" value="{{ old('user_name') }}" name="user_name"><br>
+                <input class="form-control"type="email" placeholder="Email" value="{{ old('email') }}" name="email"><br>
+                <input class="form-control"type="number" placeholder="Phone" value="{{ old('phone') }}" name="phone"><br>
+                <input class="form-control"type="date" placeholder="Date of Birth" value="{{ old('dob') }}" name="dob"><br>
+                <input class="form-control"type="text" placeholder="Address" value="{{ old('address') }}" name="address"><br>
+                <input class="form-control"type="text" placeholder="City" value="{{ old('city') }}" name="city"><br>
+                <input class="form-control"type="text" placeholder="Country" value="{{ old('country') }}" name="country"><br>
+                <input class="form-control"type="text" placeholder="Company Name" value="{{ old('company_name') }}" name="company_name"><br>
                 <input class="form-control"type="password" placeholder="Password" name="password"><br>
                 <input class="form-control"type="password" placeholder="Re-enter Password" name="confirm_password"><br>
                 <br><button class="form-control btn btn-primary">Sign Up</button><br><br>

@@ -54,6 +54,7 @@
               <div class="row justify-content-between">
                 <div class="col-4">
                   <h5 class="text-left">Company Details</h5>
+                  <span class="text-danger">{{session('msg')}}</span>
                 </div>
                 <div class="col-4 text-right">
                   <a class="btn btn-warning mr-1" href="/manager/company/edit/{{$company['id']}} ">Edit</a>

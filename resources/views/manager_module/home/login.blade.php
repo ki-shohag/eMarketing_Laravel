@@ -35,9 +35,12 @@
             <div class="col col-sm-7 col-lg-5 col-xl-3 mt-5 mb-5 text-center" id="login-box">
                 <h2>Login Panel</h2><br>
                 <h5 class="text-danger"><i><b>{{session('msg')}}</b></i></h5><br>
+                @foreach($errors->all() as $err)
+                <span class="text-danger">*{{$err}}</span><br>
+                @endforeach
                 <form method="post" action="/manager/login">
                 @csrf
-                  <input class="form-control"type="email" placeholder="Email" name="email"><br>
+                  <input class="form-control"type="email" value="{{old('email')}}" placeholder="Email" name="email"><br>
                 <input class="form-control"type="password" placeholder="Password" name="password"><br>
                 <button class="btn btn-primary btn-block">Login</button><br>
                 </form>

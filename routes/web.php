@@ -29,7 +29,7 @@ Route::post('/manager/verify-code', [accessController::class, 'verifyCode']);
 Route::get('/manager/reset-password', [accessController::class, 'showResetPasswordPage']);
 Route::post('/manager/reset-password', [accessController::class, 'changePassword']);
 
-Route::group(['middleware'=>['sess']], function () {
+Route::group(['middleware'=>['sess','statuscheck']], function () {
     Route::get('/manager-dashboard', [managersController::class, 'index']);
     Route::get('/manager/clients', [clientsController::class, 'index']);
     Route::post('/clients/add-client', [clientsController::class, 'insertClient']);

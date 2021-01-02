@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\companyEditValidation;
 use Illuminate\Http\Request;
 use App\Models\manager_module\Company;
 
@@ -15,7 +16,7 @@ class companyController extends Controller
         $company = Company::find($id);
         return view('manager_module.company.edit')->with('company', $company);
     }
-    public function updateCompany(Request $req, $id){
+    public function updateCompany(companyEditValidation $req, $id){
         $company = Company::find($id);
         $company->company_name = $req->company_name;
         $company->company_address = $req->company_address;
@@ -27,7 +28,7 @@ class companyController extends Controller
         }
         else{
             $req.session()->flash('msg', '*Failed to update company!');
-            return redirect('/manager/company/edit/$id');
+            return redirect('/manager/company/edit/$id')->withInput();
         }
     }
 }

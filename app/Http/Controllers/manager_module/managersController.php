@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\profileEditValidation;
 use Illuminate\Http\Request;
 use App\Models\manager_module\Manager;
 use App\Models\manager_module\Client;
@@ -62,7 +62,7 @@ class managersController extends Controller
         }
     }
 
-    public function updateProfile(Request $req){
+    public function updateProfile(profileEditValidation $req){
         $manager = Manager::find($req->session()->get('user_id'));
         $manager->full_name = $req->full_name;
         $manager->company_name = $req->company_name;

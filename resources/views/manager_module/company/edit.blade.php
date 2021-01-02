@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Manager Profile</title>
+  <title>Company Management</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
   <link href="{{asset('img/favicon.png')}}" rel="icon">
@@ -56,6 +56,9 @@
                   <div class="col-4">
                     <h5 class="text-left">Company Details</h5>
                     <span class="text-danger">{{session('msg')}}</span>
+                    @foreach($errors->all() as $err)
+                      <span class="text-danger">*{{$err}}</span><br>
+                    @endforeach
                   </div>
                   <div class="col-4 text-right">
                     <button type="submit" class="btn btn-success mr-1">Save Changes</button>

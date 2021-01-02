@@ -11,7 +11,7 @@ use App\Models\manager_module\Note;
 use App\Models\manager_module\Proposal;
 use App\Models\manager_module\Manager;
 use App\Models\manager_module\Service;
-use Illuminate\Support\Facades\App;
+use App\Http\Requests\insertClientValidation;
 
 class clientsController extends Controller
 {
@@ -20,7 +20,7 @@ class clientsController extends Controller
         return view('manager_module.clients.index')->with('clients', $clients);
     }
 
-    public function insertClient(Request $req){
+    public function insertClient(insertClientValidation $req){
         $manager = Manager::find($req->session()->get('user_id'));
 
         $client = new Client();
@@ -36,7 +36,7 @@ class clientsController extends Controller
         $client->billing_state = $req->billing_state;
         $client->email = $req->email;
         $client->password = $req->password;
-        $client->status = $req->status;
+        $client->status = 'Active';
         $client->added_by = $manager['full_name'];
         $client->adding_date = date("Y-m-d");
 
@@ -46,9 +46,9 @@ class clientsController extends Controller
         }
         else{
             $req.session()->flash('msg', '*Failed to add new client!');
-            return redirect('/manager/clients');
+            return redirect('/manager/clients')->withInput();
         }
-}
+    }
 
     public function showClient(Request $req, $id){
         $client = Client::find($id);

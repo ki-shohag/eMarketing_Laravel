@@ -126,11 +126,6 @@
                                                         value="0{{$client['phone']}}" name="phone"></td>
                                             </tr>
                                             <tr>
-                                                <td>Email : </td>
-                                                <td><input class="form-control" type="email" placeholder="Email: "
-                                                        value="{{$client['email']}}" name="email"></td>
-                                            </tr>
-                                            <tr>
                                                 <td>Address : </td>
                                                 <td><input class="form-control" type="text" placeholder="Address:"
                                                         value="{{$client['address']}}" name="address"></td>

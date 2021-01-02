@@ -54,6 +54,9 @@
                         <div class="col">
                             <h4>Client Management</h4>
                             <span class="text-danger">{{session('msg')}}</span>
+                            @foreach($errors->all() as $err)
+                            <span class="text-danger">*{{$err}}</span><br>
+                            @endforeach
                         </div>
                         <div class="col text-right">
                             <!-- Button trigger modal -->
@@ -81,25 +84,24 @@
                                                 <h5 class="text-left">Company Details</h5>
                                                 <div class="form-row">
 
-                                                    <input type="text" class="form-control mt-1"placeholder="Customer Full Name" name="full_name">
-                                                    <input type="number" class="form-control mt-1" placeholder="Phone" name="phone">
-                                                    <input type="text" class="form-control mt-1" placeholder="Address" name="address">
-                                                    <input type="text" class="form-control mt-1" placeholder="City" name="city">
-                                                    <input type="text" class="form-control mt-1" placeholder="Country" name="country">
-                                                    <input type="text" class="form-control mt-1" placeholder="Website" name="website">
+                                                    <input type="text" class="form-control mt-1"placeholder="Customer Full Name" name="full_name" value="{{old('full_name')}}">
+                                                    <input type="number" class="form-control mt-1" placeholder="Phone" name="phone" value="{{old('phone')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="Address" name="address" value="{{old('address')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="City" name="city" value="{{old('city')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="Country" name="country" value="{{old('country')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="Website" name="website" value="{{old('website')}}">
                                                 </div>
                                                 <h5 class="mt-3 text-left">Billing Address</h5>
                                                 <div class="form-row">
-                                                    <input type="text" class="form-control mt-1" placeholder="City" name="billing_city">
-                                                    <input type="text" class="form-control mt-1" placeholder="State" name="billing_state">
-                                                    <input type="number" class="form-control mt-1" placeholder="Zip Code" name="billing_zip">
-                                                    <input type="text" class="form-control mt-1" placeholder="Country" name="billing_country">
+                                                    <input type="text" class="form-control mt-1" placeholder="City" name="billing_city" value="{{old('billing_city')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="State" name="billing_state" value="{{old('billing_state')}}">
+                                                    <input type="number" class="form-control mt-1" placeholder="Zip Code" name="billing_zip" value="{{old('billing_zip')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="Country" name="billing_country" value="{{old('billing_country')}}">
                                                 </div>
                                                 <h5 class="mt-3 text-left">Account Login</h5>
                                                 <div class="form-row">
-                                                    <input type="email" class="form-control mt-1" placeholder="Email" name="email">
-                                                    <input type="text" class="form-control mt-1" placeholder="Password" name="password">
-                                                    <input type="text" class="form-control mt-1" placeholder="Status" name="status">
+                                                    <input type="email" class="form-control mt-1" placeholder="Email" name="email" value="{{old('email')}}">
+                                                    <input type="text" class="form-control mt-1" placeholder="Password" name="password" value="{{old('password')}}">
                                                 </div>
 
 

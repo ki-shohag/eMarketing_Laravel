@@ -64,7 +64,10 @@
                 </div>
               </div>
               <div class="text-center mt-3 mb-2">
-                <img src="{{asset('/img/team/team-1.jpg')}}" alt="No Image.." id="manager-profile-pic">
+                <img src="{{asset('/img/team/team-1.jpg')}}" alt="No Image.." id="manager-profile-pic"><br>
+                @foreach($errors->all() as $err)
+                      <span class="text-danger">*{{$err}}</span><br>
+                @endforeach
               </div>
               <table id="appointmentsTable" class="table table-striped table-bordered" style="width:100%">
                 <tbody>
