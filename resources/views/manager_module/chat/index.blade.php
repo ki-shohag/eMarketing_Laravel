@@ -48,27 +48,13 @@
             <div class="col col-xl-8">
               <div class="row justify-content-around">
                 <div class="col-12 col-xl-3 bg-success text-white rounded"><br>
-                  
+                  <h4 class="border-bottom border-light">Start a new chat</h4>
                     @foreach($clients as $client)
-                    <a href="/manager/chat/{{ $client['id']}}" class="btn btn-success btn-block btn-sm text-left border border-secondary">{{$client['full_name']}}</a><br>
+                    <a href="/manager/chat/{{ $client['id']}}" class="btn btn-success btn-block btn-sm text-left border border-light">{{$client['full_name']}}</a><br>
                     @endforeach
                 </div>
-                <div class="col-12 col-xl-8 border border-success pt-2">
-                  <div class="bg-success text-white pt-3 text-right pr-4">
-                    <label for="">User Name</label>
-                  </div><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <label for="" class="text-left">Sender-1 Message</label><br>
-                  <label for="" class="float-right">Sender-2 Message</label><br>
-                  <textarea name="" id="" cols="100" rows="10">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias facere similique ipsum sit eum eos quisquam asperiores voluptas nihil eligendi necessitatibus, rerum alias soluta fugiat dicta voluptatibus totam nisi? Repellat.
-                  </textarea>
-                  <button class="btn btn-success btn-block">Send</button>
+                <div class="col-12 col-xl-8 border rounded border-success pt-2">
+                      <h1 class="pt-5 mt-4 pl-5 border-bottom border-success">Start a chat with your client....</h1>
                 </div>
               </div>
             </div>

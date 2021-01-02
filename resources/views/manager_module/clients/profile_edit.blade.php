@@ -64,7 +64,7 @@
                         <a class="btn btn-success btn-block"href="/manager/show-client/{{$client['id']}}/appointments"><span class="text-light">Appoitments</span></a></button><br>
                         <a class="btn btn-danger btn-block"href="/manager/show-client/{{$client['id']}}/notes"><span class="text-light">Notes</span></a></button><br>
                         <a class="btn btn-dark btn-block"href="/manager/show-client/{{$client['id']}}/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <a class="btn btn-info btn-block"href="/manager/show-client/{{$client['id']}}/chat"><span class="text-light">Chat</span></a></button><br>  
+                        <a class="btn btn-info btn-block"href="/manager/chat/{{$client['id']}}"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                     </div>
                 </div>
@@ -112,7 +112,12 @@
                                 
                             </div>
                             <div class="col-12">
+                                <span class="text-danger">{{session('msg')}}</span>
+                                @foreach($errors->all() as $err)
+                                <span class="text-danger">*{{$err}}</span><br>
+                                @endforeach
                                 <form action="/clients/profile/edit/{{$client['id']}}" method="post">
+                                @csrf
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>

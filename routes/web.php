@@ -57,6 +57,8 @@ Route::group(['middleware'=>['sess','statuscheck']], function () {
 
     Route::post('/manager/upload-profile-pic', [managersController::class, 'uploadProfilePic']);
 
+    Route::post('/clients/profile/edit/{client_id}', [clientsController::class, 'udpateClient']);
+    
     Route::post('/clients/{client_id}/calls/add-call', [callsController::class, 'insertCall']);
     Route::post('/client/{client_id}/calls/edit/{call_id}', [callsController::class, 'updateCall']);
     Route::get('/clients/{client_id}/calls/delete/{call_id}', [callsController::class, 'deleteCall']);

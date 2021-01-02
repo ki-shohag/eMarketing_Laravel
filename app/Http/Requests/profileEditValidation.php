@@ -27,7 +27,7 @@ class profileEditValidation extends FormRequest
             'full_name' => 'required|min:3, max:30',
             'company_name' => 'required|min:3, max:30',
             'city' => 'required|min:3, max:30',
-            'contact_number' => 'required|min:11, max:11',
+            'phone' => 'required|min:11, max:11',
             'address' => 'required|min:11, max:100',            
             'country' => 'required|min:3, max:100',
         ];

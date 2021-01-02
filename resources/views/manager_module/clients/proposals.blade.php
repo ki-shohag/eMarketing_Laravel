@@ -68,13 +68,18 @@
                             <a class="btn btn-success btn-block" href="/manager/show-client/{{$client['id']}}/appointments"><span class="text-light">Appoitments</span></a></button><br>
                             <a class="btn btn-danger btn-block" href="/manager/show-client/{{$client['id']}}/notes"><span class="text-light">Notes</span></a></button><br>
                             <a class="btn btn-dark btn-block" href="/manager/show-client/{{$client['id']}}/proposals"><span class="text-light">Proposals</span></a></button><br>
-                            <a class="btn btn-info btn-block" href="/manager/show-client/{{$client['id']}}/chat"><span class="text-light">Chat</span></a></button><br>
+                            <a class="btn btn-info btn-block"href="/manager/chat/{{$client['id']}}"><span class="text-light">Chat</span></a></button><br>
                         </div>
                     </div>
                 </div>
                 <div class="col col-xl-6">
                     <section id="proposals-section">
                         <div class="row m-0 p-0">
+                            <div class="col-7 ">
+                            @foreach($errors->all() as $err)
+                                <span class="text-danger">*{{$err}}</span><br>
+                                @endforeach
+                            </div>
                             <div class="col-6 bg-primary  mb-3 pt-3">
                                 <h5 class="text-light">Proposals</h5>
                                 <span class="text-danger">{{session('msg')}}</span>
@@ -99,20 +104,19 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             @csrf
-                                                            <input class="form-control" type="text" placeholder="Title" name="title"><br>
-                                                            <input class="form-control" type="text" placeholder="Subject" name="subject"><br>
-                                                            <input class="form-control" type="text" placeholder="Body" name="body"><br>
-                                                            <input class="form-control" type="text" placeholder="Customer" name="customer_name"><br>
-                                                            <input class="form-control" type="date" placeholder="Date" name="starting_date"><br>
-                                                            <input class="form-control" type="date" placeholder="Deadline Date" name="deadline_date"><br>
-                                                            <input class="form-control" type="text" placeholder="Address" name="address"><br>
-                                                            <input class="form-control" type="text" placeholder="City" name="city"><br>
-                                                            <input class="form-control" type="text" placeholder="State" name="state"><br>
-                                                            <input class="form-control" type="text" placeholder="Country" name="country"><br>
-                                                            <input class="form-control" type="number" placeholder="Zip Code" name="zip_code"><br>
-                                                            <input class="form-control" type="email" placeholder="Email" name="email"><br>
-                                                            <input class="form-control" type="number" placeholder="Phone" name="phone"><br>
-                                                            <input class="form-control" type="text" placeholder="Select Item" name="item"><br>
+                                                            <input class="form-control" type="text" placeholder="Title" name="title" value="{{old('title')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="Subject" name="subject" value="{{old('subject')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="Body" name="body" value="{{old('body')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="Customer" name="customer_name" value="{{old('customer_name')}}"><br>
+                                                            <input class="form-control" type="date" placeholder="Date" name="starting_date" value="{{old('starting_date')}}"><br>
+                                                            <input class="form-control" type="date" placeholder="Deadline Date" name="deadline_date" value="{{old('deadline_date')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="Address" name="address" value="{{old('address')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="City" name="city" value="{{old('city')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="State" name="state" value="{{old('state')}}"><br>
+                                                            <input class="form-control" type="text" placeholder="Country" name="country" value="{{old('country')}}"><br>
+                                                            <input class="form-control" type="number" placeholder="Zip Code" name="zip_code" value="{{old('zip_code')}}"><br>
+                                                            <input class="form-control" type="email" placeholder="Email" name="email" value="{{old('email')}}"><br>
+                                                            <input class="form-control" type="number" placeholder="Phone" name="phone" value="{{old('phone')}}"><br>
                                                             <select name="item" class="form-control">
                                                             <option disabled="disabled" selected="selected">Select a service</option>
                                                             @foreach($services as $services)
@@ -124,8 +128,8 @@
                                                                 <option value="Available">Available</option>
                                                                 <option value="Unavailable">Unavailable</option>
                                                             </select><br>
-                                                            <input class="form-control" type="number" placeholder="Quantity" name="quantity"><br>
-                                                            <input class="form-control" type="number"  placeholder="Price Rate Pcs" name="rate"><br>
+                                                            <input class="form-control" type="number" placeholder="Quantity" name="quantity" value="{{old('quanitity')}}"><br>
+                                                            <input class="form-control" type="number"  placeholder="Price Rate Pcs" name="rate" value="{{old('rate')}}"><br>
                                                         </div>
                                                     </div>
                                                 </div>

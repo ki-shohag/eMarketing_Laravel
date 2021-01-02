@@ -5,13 +5,15 @@ namespace App\Http\Controllers\manager_module;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\insertProposalValidation;
+use App\Http\Requests\updateProposalValidation;
 use App\Models\manager_module\Client;
 use App\Models\manager_module\Proposal;
 use App\Models\manager_module\Company;
 
 class proposalsController extends Controller
 {
-    public function insertProposal(Request $req, $client_id)
+    public function insertProposal(insertProposalValidation $req, $client_id)
     {
         $company = Company::where('manager_id', $req->session()->get('user_id'))->get()->first();
         $proposal = new Proposal();
@@ -41,11 +43,11 @@ class proposalsController extends Controller
             return redirect('/manager/show-client/' . $client_id . '/proposals');
         } else {
             $req . session()->flash('msg', '*Could not insert proposal!');
-            return redirect('/manager/show-client/' . $client_id . '/proposals');
+            return redirect('/manager/show-client/' . $client_id . '/proposals')->withInput();
         }
     }
 
-    public function updateProposal(Request $req, $client_id, $proposal_id)
+    public function updateProposal(updateProposalValidation $req, $client_id, $proposal_id)
     {
         $proposal = Proposal::find($proposal_id);
         $proposal->title = $req->title;
@@ -71,7 +73,7 @@ class proposalsController extends Controller
             return redirect('/manager/show-client/' . $client_id . '/proposals');
         } else {
             $req . session()->flash('msg', '*Could not update proposal!');
-            return redirect('/manager/show-client/' . $client_id . '/proposals');
+            return redirect('/manager/show-client/' . $client_id . '/proposals')->withInput();
         }
     }
 

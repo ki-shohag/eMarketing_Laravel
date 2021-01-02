@@ -12,6 +12,7 @@ use App\Models\manager_module\Proposal;
 use App\Models\manager_module\Manager;
 use App\Models\manager_module\Service;
 use App\Http\Requests\insertClientValidation;
+use App\Http\Requests\clientEditValidation;
 
 class clientsController extends Controller
 {
@@ -58,12 +59,14 @@ class clientsController extends Controller
     public function showClientCall(Request $req, $id){
         //DB::enableQueryLog(); // Enable query log
         $client = Client::find($id);
-        $calls = Call::where('manager_id',$req->session()->get('user_id'))->get();
+        $calls = Call::where('manager_id',$req->session()->get('user_id'))
+        ->where('client_id', $id)
+        ->get();
         //dd(DB::getQueryLog()); // Show results of log
         return view('manager_module.clients.calls')->with('client', $client)->with('calls', $calls);
     }
     public function showClientAppointment(Request $req, $id){
-        $appointments = Appointment::where('manager_id',$req->session()->get('user_id'))->get();
+        $appointments = Appointment::where('manager_id',$req->session()->get('user_id'))->where('clients_id', $id)->get();
         $client = Client::find($id);
         return view('manager_module.clients.appointments')->with('client', $client)->with('appointments',$appointments);
     }
@@ -71,12 +74,12 @@ class clientsController extends Controller
         return view('manager_module.clients.chat');
     }
     public function showClientNote(Request $req, $id){
-        $notes = Note::where('manager_id',$req->session()->get('user_id'))->get();
+        $notes = Note::where('manager_id',$req->session()->get('user_id'))->where('client_id', $id)->get();
         $client = Client::find($id);
         return view('manager_module.clients.notes')->with('client', $client)->with('notes', $notes);
     }
     public function showClientProposal(Request $req, $id){
-        $proposals = Proposal::where('manager_id',$req->session()->get('user_id'))->get();
+        $proposals = Proposal::where('manager_id',$req->session()->get('user_id'))->where('client_id', $id)->get();
         $client = Client::find($id);
         $services = Service::leftJoin('company', function ($join){
             $join->on('service.company_id', '=', 'company.id');
@@ -94,5 +97,27 @@ class clientsController extends Controller
         $client = Client::find($id);
         $client->delete();
         return $this->index($req);
+    }
+    public function udpateClient(clientEditValidation $req,$client_id){
+        $client = Client::find($client_id);
+        $client->full_name = $req->full_name;
+        $client->address = $req->address;
+        $client->phone = $req->phone;
+        $client->city = $req->city;
+        $client->country = $req->country;
+        $client->billing_city = $req->billing_city;
+        $client->billing_state = $req->billing_state;
+        $client->billing_zip = $req->billing_zip;
+        $client->billing_country = $req->billing_country;
+        $client->status = $req->status;
+
+        if($client->save()){
+            $req.session()->flash('msg', '*Client updated successfully!');
+            return redirect('/manager/show-client/' . $client_id);
+        }
+        else{
+            $req.session()->flash('msg', '*Failed to update client!');
+            return redirect('/manager/show-client/' . $client_id.'/edit');
+        }
     }
 }

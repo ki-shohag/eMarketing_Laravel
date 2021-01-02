@@ -63,7 +63,7 @@
                   
                   <h6 class="mb-5">Total Services: <span class="h1"><b><i>{{$totalServices}}</i></b></span></h6>
                   <h6 class="mb-5">Available Services: <span class="h1"><b><i>{{$availableServices}}</i></b></span></h6>
-                  <button class="btn btn-link border-light mb-1"><a class="text-center text-light  text-decoration-none" href="/manager/clients">Manage Services</a></button>
+                  <button class="btn btn-link border-light mb-1"><a class="text-center text-light  text-decoration-none" href="/manager/services">Manage Services</a></button>
                 </div>
               </div>
             </div>

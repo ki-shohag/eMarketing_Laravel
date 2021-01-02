@@ -60,7 +60,7 @@
                         <a class="btn btn-success btn-block"href="/manager/show-client/{{$client['id']}}/appointments"><span class="text-light">Appoitments</span></a></button><br>
                         <a class="btn btn-danger btn-block"href="/manager/show-client/{{$client['id']}}/notes"><span class="text-light">Notes</span></a></button><br>
                         <a class="btn btn-dark btn-block"href="/manager/show-client/{{$client['id']}}/proposals"><span class="text-light">Proposals</span></a></button><br>
-                        <a class="btn btn-info btn-block"href="/manager/show-client/{{$client['id']}}/chat"><span class="text-light">Chat</span></a></button><br>  
+                        <a class="btn btn-info btn-block"href="/manager/chat/{{$client['id']}}"><span class="text-light">Chat</span></a></button><br>  
                     </div>
                 </div>
                 <div class="col col-xl-6">
@@ -68,6 +68,10 @@
                         <div class="row m-0 p-0">
                             <div class="col-6 bg-primary  mb-3 pt-3">
                                 <h5 class="text-light">Profile Details</h5>
+                                <span class="text-danger">{{session('msg')}}</span>
+                                @foreach($errors->all() as $err)
+                                <span class="text-danger">*{{$err}}</span><br>
+                                @endforeach
                             </div>
                             <div class="col-6 text-right bg-primary  mb-3 pt-3">
                                 <button class="btn btn-success mb-2"><a href="/manager/show-client/{{$client['id']}}/edit" class="text-light">Edit</a></button>

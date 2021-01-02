@@ -26,14 +26,14 @@ class clientEditValidation extends FormRequest
         return [
             'full_name' => 'required|min:3, max:30',
             'phone' => 'required|min:11, max:11',
-            'address' => 'required|min:11, max:100',            
+            'address' => 'required|min:3, max:100',            
             'city' => 'required|min:3, max:100',
-            'country' => 'required|min:10, max:50',
-            'website' => 'required|min:10, max:50',
-            'billing_state' => 'required|min:10, max:50',
-            'billing_city' => 'required|min:10, max:50',
-            'billing_zip' => 'required|min:10, max:50',
-            'biling_country' => 'required|min:10, max:50',
+            'country' => 'required|min:2, max:50',
+            'website' => 'required|min:7, max:50',
+            'billing_state' => 'required|min:2, max:50',
+            'billing_city' => 'required|min:2, max:50',
+            'billing_zip' => 'required|min:4, max:50',
+            'billing_country' => 'required|min:2, max:50',
         ];
     }
 }
