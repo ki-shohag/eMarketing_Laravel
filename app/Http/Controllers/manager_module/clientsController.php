@@ -13,6 +13,7 @@ use App\Models\manager_module\Manager;
 use App\Models\manager_module\Service;
 use App\Http\Requests\insertClientValidation;
 use App\Http\Requests\clientEditValidation;
+use Illuminate\Support\Facades\Http;
 
 class clientsController extends Controller
 {
@@ -118,6 +119,34 @@ class clientsController extends Controller
         else{
             $req.session()->flash('msg', '*Failed to update client!');
             return redirect('/manager/show-client/' . $client_id.'/edit');
+        }
+    }
+    public function getReportData(Request $req){
+        if($response = Http::get('http://localhost:3000/clients/getAllData')){
+            if($response->getStatusCode()==200){
+                $clients =json_decode($response->getBody(), true);
+                $clientData = Client::groupBy('city')
+                ->selectRaw('city, count(*) AS count')
+                ->get();
+                //echo $clientData;
+
+                // $array = array();
+                // for($i=0; $i<count($clientData); $i++){
+                //     //print_r ($clientData[$i]['city'].":".$clientData[$i]['count']);
+                //     //array_push($array, $clientData[$i]['city'], $clientData[$i]['count']);
+                //     array_push($array, array($clientData[$i]['city'], $clientData[$i]['count']));
+                // }
+                // var_dump($array);
+                return view('manager_module.clients.clients-report')->with('clients', $clients)->with('clientData', $clientData);
+            }
+            else{
+                $req.session()->flash('msg', '*Failed to connect to Node Server!');
+                return redirect('/manager/clients');
+            }
+        }
+        else{
+            $req.session()->flash('msg', '*Failed to connect to Node Server!');
+            return redirect('/manager/clients');
         }
     }
 }

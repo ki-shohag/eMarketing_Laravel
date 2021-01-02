@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home',[accessController::class, 'showData']);
+
 Route::get('/manager/login', [accessController::class, 'showLoginPage']);
 Route::post('/manager/login', [accessController::class, 'loginVerification']);
 Route::get('/manager/signout', [accessController::class, 'showSignOutPage']);
@@ -56,6 +58,8 @@ Route::group(['middleware'=>['sess','statuscheck']], function () {
     Route::get('/manager/show-client/{id}/proposals', [clientsController::class, 'showClientProposal']);
 
     Route::post('/manager/upload-profile-pic', [managersController::class, 'uploadProfilePic']);
+
+    Route::get('/clients/get-report', [clientsController::class, 'getReportData']);
 
     Route::post('/clients/profile/edit/{client_id}', [clientsController::class, 'udpateClient']);
     

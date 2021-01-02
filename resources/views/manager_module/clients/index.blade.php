@@ -59,6 +59,7 @@
                             @endforeach
                         </div>
                         <div class="col text-right">
+                            <a class="btn btn-success text-light" href="/clients/get-report">Get Client Report</a>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#exampleModalCenter">
