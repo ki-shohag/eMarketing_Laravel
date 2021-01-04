@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\clientUser\Note;
 use App\Models\clientUser\Appointment;
-
+use App\Models\clientUser\Proposal;
 class companyController extends Controller
 {
     public function index(Request $req)
@@ -78,23 +78,25 @@ class companyController extends Controller
         }
     }
 
-    public function optUpProposal(Request $req, $id)
+    public function optUpProposal(Request $req, $id, $id2)
     {
-        $proposals = 
+        $proposal = Proposal::find($id2);
+        $proposal->status = 'Inactive';
 
-        if ($proposals != null) {
-            return view('clientUser.company.proposals', compact('proposals'));
+        if ($proposal->save()) {
+            return redirect()->route('company.proposal', $req->session()->get('company_id'));
         } else {
             return back();
         }
     }
 
-    public function approveProposal(Request $req, $id)
+    public function approveProposal(Request $req, $id, $id2)
     {
-        $proposals = 
+        $proposal = Proposal::find($id2);
+        $proposal->status = 'Active';
 
-        if ($proposals != null) {
-            return view('clientUser.company.proposals', compact('proposals'));
+        if ($proposal->save()) {
+            return redirect()->route('company.proposal', $req->session()->get('company_id'));
         } else {
             return back();
         }
