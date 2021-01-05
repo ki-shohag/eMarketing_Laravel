@@ -28,7 +28,7 @@ use App\Http\Controllers\clientUser\ApiController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/welcome',[accessController::class, 'showLandingPage']);
 Route::get('/home',[accessController::class, 'showData']);
 
 Route::get('/manager/login', [accessController::class, 'showLoginPage']);

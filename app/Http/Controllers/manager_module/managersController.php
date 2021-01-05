@@ -9,6 +9,8 @@ use App\Models\manager_module\Transaction;
 use App\Models\manager_module\PendingTransaction;
 use App\Models\manager_module\Client;
 use App\Models\manager_module\Service;
+use App\Models\manager_module\Company;
+
 
 class managersController extends Controller
 {
@@ -16,9 +18,9 @@ class managersController extends Controller
         $totalClients = Client::count();
         $activeClients = Client::where('status', 'Active')->count();
         $totalServices = Service::count();
-        $availableServices = Service::where('status', 'Available')->orWhere('status', 'available')->count();
-        $totalSuccessfullTransactions = Transaction::all()->count();
-        $totalPendingTransactions = PendingTransaction::all()->count();
+        $availableServices = Service::where('status', 'Available')->count();
+        $totalSuccessfullTransactions = Transaction::where('manager_id', $req->session()->get('user_id'))->count();
+        $totalPendingTransactions = PendingTransaction::where('manager_id', $req->session()->get('user_id'))->count();
         $totalTransactions = $totalSuccessfullTransactions+$totalPendingTransactions;
         return view('manager_module.home.index')->with('totalClients', $totalClients)
         ->with('totalServices', $totalServices)

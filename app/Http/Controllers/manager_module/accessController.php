@@ -183,4 +183,8 @@ class accessController extends Controller
             return redirect('/manager/reset-password');
         }
     }
+
+    public function showLandingPage(Request $req){
+        return view('manager_module.home.welcome');
+    }
 }
