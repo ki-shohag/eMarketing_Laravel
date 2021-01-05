@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\profileEditValidation;
 use Illuminate\Http\Request;
 use App\Models\manager_module\Manager;
+use App\Models\manager_module\Transaction;
+use App\Models\manager_module\PendingTransaction;
 use App\Models\manager_module\Client;
 use App\Models\manager_module\Service;
 
@@ -15,10 +17,16 @@ class managersController extends Controller
         $activeClients = Client::where('status', 'Active')->count();
         $totalServices = Service::count();
         $availableServices = Service::where('status', 'Available')->orWhere('status', 'available')->count();
+        $totalSuccessfullTransactions = Transaction::all()->count();
+        $totalPendingTransactions = PendingTransaction::all()->count();
+        $totalTransactions = $totalSuccessfullTransactions+$totalPendingTransactions;
         return view('manager_module.home.index')->with('totalClients', $totalClients)
         ->with('totalServices', $totalServices)
         ->with('activeClients', $activeClients)
-        ->with('availableServices', $availableServices);        
+        ->with('availableServices', $availableServices)
+        ->with('totalTransactions',$totalTransactions)
+        ->with('totalPendingTransactions', $totalPendingTransactions)
+        ->with('totalSuccessfullTransactions', $totalSuccessfullTransactions);
     }
 
     public function showProfile(Request $req){

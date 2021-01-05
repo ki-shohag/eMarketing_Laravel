@@ -54,16 +54,23 @@
         <div class="row justify-content-center mt-3">
             <div class="col col-xl-8">
               <div class="row justify-content-around">
-                <div class="col-4 manager-dashboard-boxes text-center pt-5">
+                <div class="col-3 manager-dashboard-boxes text-center pt-5">
                   <h5 class="mb-5">Total Clients: <span class="h1"><b><i>{{$totalClients}}</i></b></span></h5>
                   <h5 class="mb-5">Active Clients: <span class="h1"><b><i>{{$activeClients}}</i></b></span></h5>
-                  <button class="btn btn-link border-light mb-1"><a class="text-center text-light  text-decoration-none" href="/manager/clients">Manage Clients</a></button>
+                  <a class="border-bottom border-light mb-1 text-center text-light  text-decoration-none" href="/manager/clients">Manage Clients</a>
                 </div>
-                <div class="col-4 manager-dashboard-boxes text-center pt-5" style="background: #5F9F9F;">
+                <div class="col-3 manager-dashboard-boxes text-center pt-5" style="background: #5F9F9F;">
                   
-                  <h6 class="mb-5">Total Services: <span class="h1"><b><i>{{$totalServices}}</i></b></span></h6>
-                  <h6 class="mb-5">Available Services: <span class="h1"><b><i>{{$availableServices}}</i></b></span></h6>
-                  <button class="btn btn-link border-light mb-1"><a class="text-center text-light  text-decoration-none" href="/manager/services">Manage Services</a></button>
+                  <h5 class="mb-5">Total Services: <span class="h1"><b><i>{{$totalServices}}</i></b></span></h5>
+                  <h5 class="mb-5">Available Services: <span class="h1"><b><i>{{$availableServices}}</i></b></span></h5>
+                  <a class="border-bottom border-light  mb-1 text-center text-light  text-decoration-none" href="/manager/services">Manage Services</a>
+                </div>
+
+                <div class="col-3 manager-dashboard-boxes text-center pt-5" style="background: #ff7b54;">
+                  <h5 class="mb-5">Total Transactions: <span class="h1"><b><i>{{$totalTransactions}}</i></b></span></h5>
+                  <h5 class="mb-5">Successful Transactions: <span class="h1"><b><i>{{$totalSuccessfullTransactions}}</i></b></span></h5>
+                  <h5 class="mb-5">Pending Transactions: <span class="h1"><b><i>{{$totalPendingTransactions}}</i></b></span></h5>
+                  <a href="/manager/transaction" class="border-bottom border-light  mb-1 text-center text-light  text-decoration-none">Manage Transactions</a>
                 </div>
               </div>
             </div>
